@@ -1,0 +1,154 @@
+﻿@model odh_foundation.Models.HeadTab
+@using odh_foundation.Models;
+@{
+    UsersContext db = new UsersContext();
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "AddHead";
+    var aa = 0;
+    var head = (from h in db.HeadTabs select new { h.head }).Distinct().ToList(); 
+}
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+    debugger;
+    function getIds(checkList) {
+        var branchcode = new Array();
+        var loopCounter = 0;
+        //find all the checked checkboxes
+        jQuery("input[name=" + checkList + "]:checked").each
+        (
+          function () {
+              //fill the array with the values
+              branchcode[loopCounter] = jQuery(this).val();
+              loopCounter += 1;
+          }
+        );
+        //Send the list off
+        jQuery.getJSON("/Admin/AddHead/", { branchcode: branchcode }, idsGotten);
+    }
+    //});
+</script>
+<script>
+    $(function () {
+        // Set 'Select All' to checked if all other boxes are already checked
+        $('#selectAll').prop('checked', $('.check').length == $('.check:checked').length);
+
+        // Add click function to 'Select All' to select all other boxes
+        $('#selectAll').click(function () {
+            $('.check').prop('checked', this.checked);
+        });
+
+        // Add click function to each child checkbox
+        $('.check').click(function () {
+            $('#selectAll').prop('checked', $('.check').length == $('.check:checked').length);
+        });
+    })
+</script>
+<div class="page-content">
+
+    <div class="container">
+
+        <div class="page-toolbar">
+
+            <div class="page-toolbar-block">
+                <div class="page-toolbar-title">Expense Head</div>
+                <div class="page-toolbar-subtitle"></div>
+            </div>
+
+            <div class="page-toolbar-block pull-right">
+                <div class="widget-info widget-from">
+                    <div id="reportrange" class="dtrange">
+                        <span></span><b class="caret"></b>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" style="width: 100%">
+            <div class="col-md-6" style="width: 100%">
+
+                <div class="block" style="width: 100%">
+                    <div class="block-content controls">
+
+
+
+
+                        @using (Html.BeginForm())
+                        {
+            
+                            <div class="row-form">
+
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Enter Head</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="head" id="head" required />
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Select @mr.branchname</label>
+                                        </span>
+                                        <input type="checkbox" id="admin" class="check" value="@User.Identity.Name" name="branchcode" checked="checked" />Admin
+                                        @foreach (var b in blist)
+                                        {
+                                            <input type="checkbox" id="check" class="check" value="@b.BranchCode" name="branchcode" />@b.BranchName
+                      
+                                        }
+                                        <input type="checkbox" id="selectAll" /><b> Select All</b>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+         
+                
+                            <div class="page-toolbar-block pull-right">
+                                <div class="widget-info widget-from">
+                                    <button type="submit" class="btn btn-primary pull-right">Create Head</button>
+                                </div>
+                            </div>
+         
+                            <p style="color: maroon;"><b>@ViewBag.msg</b></p>
+                        }
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="block" style="width: 100%">
+                    <div class="page-toolbar-block pull-right">
+                        <div class="widget-info widget-from">
+                            <h1><span class="input-group-addon">
+                                <label class="width">Head Expense Name</label>
+                            </span></h1>
+                        </div>
+                    </div>
+                    @foreach (var a in head)
+                    {
+                        aa = aa + 1;
+                        <div>
+                            <span class="input-group-addon">
+                                <label class="width">@aa &nbsp; &nbsp;&nbsp;&nbsp;@a.head</label>
+                            </span>
+                        </div>
+                                             
+                                }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

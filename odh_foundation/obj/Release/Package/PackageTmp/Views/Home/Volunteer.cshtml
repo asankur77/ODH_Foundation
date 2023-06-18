@@ -1,0 +1,243 @@
+﻿
+
+@{
+    ViewBag.Title = "Volunteer";
+}
+<script type="text/javascript">
+    $(function () {
+        $("#category").change(function () {
+            if ($(this).val() == "Other") {
+                
+                $("#category1").show();
+                   
+               
+            } else {
+                $("#category1").hide();
+            }
+        });
+    });
+    $(function () {
+        $("#exp").change(function () {
+            if ($(this).val() == "Other") {
+
+                $("#exp1").show();
+
+
+            } else {
+                $("#exp1").hide();
+            }
+        });
+    });
+    $(function () {
+        $("#vlearn").change(function () {
+            if ($(this).val() == "Other") {
+
+                $("#vlearn1").show();
+
+
+            } else {
+                $("#vlearn1").hide();
+            }
+        });
+
+        $(function () {
+            $("#activity").change(function () {
+                if ($(this).val() == "Other") {
+
+                    $("#activity1").show();
+
+
+                } else {
+                    $("#activity1").hide();
+                }
+            });
+        });
+    });
+</script>
+<!-- Start main-content -->
+  <div class="main-content">
+
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="../Content/Home/images/bg/bg6.jpg">
+      <div class="container pt-70 pb-20">
+        <!-- Section Content -->
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h2 class="title text-white"> Volunteer</h2>
+              <ol class="breadcrumb text-center text-black mt-10">
+                <li><a href="#">Home</a></li>
+                <li><a href="#"> Volunteer</a></li>
+                
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Job Apply Form -->
+    <section class="divider">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="border-1px p-30 mb-0">
+              <h3 class="text-theme-colored mt-0 pt-5">Volunteer sign up form</h3>
+                             <p class="mb-20">ODH Foundation has been driving to make transformation in the lives of the underprivileged people in India.You can be part of their journey. We need all types of people and all levels of support. Help be part of the solutions to India's gravest problems.</p>
+
+              <hr>
+              <form method="post" enctype="multipart/form-data">
+              <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" style="color:black">Name<span class="text-danger"> *</span></label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Name" name="Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">Email id used for communication<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Email" name="Email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">Mobile Number<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Mobile No" name="Mobile">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">What’s app Number<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter What'sapp Number" name="WhatsupNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">Address<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Your Address" name="Address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">I am a<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <select id="category" name="Profession" class="form-control">
+                                                <option>----- Select------</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Businessman">Businessman</option>
+                                                <option value="Working Professional">Working Professional</option>
+                                                <option value="Home Maker">Home Maker</option>
+                                                <option value="Retired Individual">Retired Individual</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                             <input type="text"  id="category1" name="category1"     class="form-control" style="display:none" placeholder="Enter Your Value">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">I can volunteer for<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <select name="VolunteerDuration" id="exp" class="form-control">
+                                                <option>----- Select------</option>
+                                                <option value="Less than a Month">Less than a Month</option>
+                                                <option value="1-3 Months">1-3 Months</option>
+                                                <option value="3-6 Months">3-6 Months</option>
+                                                <option value="More than 6 Months">More than 6 Months</option>
+                                                <option value="Full time">Full time</option>
+                                                <option value="Part time">Part time</option>
+                                                <option value="Depends on how engaging the activity is">Depends on how engaging the activity is</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                            <input type="text"  id="exp1" name="exp1"     class="form-control" style="display:none" placeholder="Enter Your Value">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">I want to volunteer because<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <select name="VolunteerPurpose" id="vlearn" class="form-control">
+                                                <option>----- Select------</option>
+                                                <option>I want to learn something about NGOs</option>
+                                                <option>I have skills that I can share</option>
+                                                <option>I need to do this as part of my course requirements</option>
+                                                <option>I want to meet other like minded people</option>
+                                                <option>I want to experience the impact I can have</option>
+                                                <option>I have time and I can spend this usefully</option>
+                                                <option>Other</option>
+                                            </select>
+                                       <input type="text"  id="vlearn1" name="vlearn1"     class="form-control" style="display:none" placeholder="Enter Your Value">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">I would like an activity that<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <select name="VolunteerAbility" id="activity" class="form-control">
+                                                <option>----- Select------</option>
+                                                <option value="Allows me to interact with many people">Allows me to interact with many people</option>
+                                                <option value="I can do by myself">I can do by myself</option>
+                                                <option value="I am not sure">I am not sure</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                       <input type="text"  id="activity1" name="activity1"     class="form-control" style="display:none" placeholder="Enter Your Value">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                <div class="form-group">
+                  <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                  <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" style="font-size:large" data-loading-text="Please wait...">Register Now</button>
+                </div>
+              </form>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> 
+  </div>  
+  <!-- end main-content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

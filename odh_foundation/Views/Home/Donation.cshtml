@@ -1,0 +1,561 @@
+﻿
+@{
+    ViewBag.Title = "Donation";
+}
+
+<style>
+    .box {
+        box-shadow: 1px 15px 26px 9px rgba(168,158,168,1);
+    }
+</style>
+<script>
+
+    $(document).ready(function () {
+        $("input[type='radio']").change(function () {
+            if ($(this).val() == "0") {
+                $("#amount").show();
+                $("#custom").show();
+            }
+            else {
+                $("#amount").hide();
+                $("#custom").hide();
+            }
+        });
+    });
+    //function checkButton() {
+    //    var getSelectedValue = document.querySelector(
+    //        'input[name="amount"]:checked');
+
+    //    if (getSelectedValue != null) {
+    //        document.getElementById("amountbox").innerHTML
+    //            = getSelectedValue.value
+    //            ;
+    //    }
+    //    else {
+    //        document.getElementById("error").innerHTML
+    //            = "*You have not selected any amount";
+    //    }
+    //}
+
+    function checkButton(amount) {
+        debugger
+        $("#amount").val(amount);
+    }
+</script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+            dateFormat: 'dd-mm-yyyy',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '-100y:c+nn',
+            maxDate: '-1d'
+        });
+    });
+
+</script>
+
+<!-- Start main-content -->
+<div class="main-content">
+    <!-- Section: inner-header -->
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="../Content/Home/images/bg/bg6.jpg">
+        <div class="container pt-70 pb-20">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="title text-white text-center">Donate Us</h2>
+                        <ol class="breadcrumb text-left text-black mt-10">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Donate Us</a></li>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start main-content -->
+    <div class="main-content">
+
+
+
+        <!-- Divider: Make a Donation -->
+        <section class="divider parallax" data-bg-img="images/bg/bg7.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 ">
+                        <div>
+                            <h3 class="mt-0 text-black" style="text-align:center;">Bank Details</h3>
+                            <h5 class="text-theme-colored mt-0 pt-5">Direct Bank Transfer through Net Banking, QR Code or Cheque  </h5>
+                            <div class="widget" style="text-align:center;">
+                                <img class="img" src="~/Content/Home/images/team/icicibank.png" style="height:30px;width:300px" alt="" />
+                            </div>
+                            <!-- ===== START: Paypal Both Onetime/Recurring Form ===== -->
+                            <table class="table table-bordered">
+
+                                <tbody>
+
+                                    <tr>
+                                        <th>Beneficiary Account Name :</th>
+                                        <td>ODH FOUNDATION</td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <th>Account Number :</th>
+                                        <td> 407905000870</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Account Type:</th>
+                                        <td>Current Account</td>
+                                    </tr>
+                                    <tr>
+                                        <th>IFSC Code:</th>
+                                        <td>ICIC0004079</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+
+
+                                <div class="widget" style="text-align:center;">
+                                    <img class="img" src="~/Content/Home/images/team/pnb.jpg" style="height:90px;width:300px" alt="" />
+                                </div>
+
+                                <tbody>
+
+                                    <tr>
+                                        <th>Beneficiary Account Name :</th>
+                                        <td>ODH FOUNDATION</td>
+
+                                    </tr>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Account Number :</th>
+                                        <td> 1892002100008186</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Account Type:</th>
+                                        <td>Current Account</td>
+                                    </tr>
+                                    <tr>
+                                        <th>IFSC Code:</th>
+                                        <td>PUNB0189200</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <div class="widget" style="text-align: center;">
+
+
+                                    <h4 class="text-theme-colored mt-0 pt-5">Scan QR Code to Donate  </h4>
+
+
+                                    <img alt="" src="../Content/Home/images/ODHQR.jpg" height="200" width="200" /><br />
+                                    <span style="width: 200px; color: red; text-align:right;"><strong>ODH FOUNDATION </strong>  </span>
+                                    <p class="mb-10">
+                                        In case you have donated directly through Bank Transfer, QR Code or Cheque, kindly WhatsApp your details such as Name, Full address, Pan and Aadhar for Tax Exemption receipt on
+
+                                        +91-9795505106
+                                        Or Email us on contactus@odhfoundation.org
+                                    </p>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="bg-theme-colored pt-60 p-40">
+                            <h3 class="mt-0 text-white">Make a Donation Now!</h3>
+
+                            <!-- ===== START: Paypal Both Onetime/Recurring Form ===== -->
+                            <form id="donarForm" action="#" accept-charset="UTF-8" method="dialog">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group text-white">
+                                            <label><strong class="">Support The Cause</strong></label>
+                                            <select name="SupportType" class="form-control">
+                                                <option value="Health">Health</option>
+                                                <option value="Education">Education</option>
+                                                <option value="Livelihood">Livelihood</option>
+                                                <option value="Environment">Environment</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group  text-white">
+                                            <label><strong class="">How much do you want to donate?</strong></label>
+                                            <div class="radio">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="1" onclick="checkButton(this.value)">
+                                                    1500 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="2" onclick="checkButton(this.value)">
+                                                    3000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="3" onclick="checkButton(this.value)">
+                                                    6000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="4" onclick="checkButton(this.value)">
+                                                    12000 Rs.
+                                                </label>
+
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="0" onclick="checkButton(this.value)">
+                                                    Other Amount
+                                                </label>
+                                            </div>
+                                            <div id="custom_other_amount">
+                                                <label id="custom" style="display:none;"><strong>Custom Amount:</strong></label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="amount" name="DonateAmount" style="display:none;" placeholder="Enter Amount">
+                                                </div>
+                                            </div>
+                                            @*<label>YOUR DONATION WILL HELP FOR THE EDUCATION OF 1 CHILD FOR 3 MONTHS</label>*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter Name*</strong></label>
+                                            <input name="Name" type="text" class="form-control" id="name" value="Akash Anand Sharma" placeholder="Enter Full Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group mb-20 text-white">
+
+                                            <label><strong class="">Enter DOB*</strong></label>
+                                            <input name="DOB" class="form-control" value="01-01-1990" id="datepicker" placeholder="Enter Date Of Birth" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter Email *</strong></label>
+                                            <input name="Email" id="email" type="text" class="form-control" placeholder="Enter Email" required value="akash@gmail.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter Phone*</strong></label>
+                                            <input id="mobNo" name="Phone" type="text" class="form-control" placeholder="Enter Phone No." required value="8127192924">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Select Country Name*</strong></label>
+                                            <select name="Country" class="form-control">
+                                                <option value="India" selected>India</option>
+
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Select State Name*</strong></label>
+                                            <select id="country-state" name="State" class="form-control">
+                                                <!-- Uttar Pradesh-->
+                                                <!--- India states -->
+
+                                                <option value="">Select state</option>
+                                                <option value="AN">Andaman and Nicobar Islands</option>
+                                                <option value="AP">Andhra Pradesh</option>
+                                                <option value="AR">Arunachal Pradesh</option>
+                                                <option value="AS">Assam</option>
+                                                <option value="BR">Bihar</option>
+                                                <option value="CH">Chandigarh</option>
+                                                <option value="CT">Chhattisgarh</option>
+                                                <option value="DN">Dadra and Nagar Haveli</option>
+                                                <option value="DD">Daman and Diu</option>
+                                                <option value="DL">Delhi</option>
+                                                <option value="GA">Goa</option>
+                                                <option value="GJ">Gujarat</option>
+                                                <option value="HR">Haryana</option>
+                                                <option value="HP">Himachal Pradesh</option>
+                                                <option value="JK">Jammu and Kashmir</option>
+                                                <option value="JH">Jharkhand</option>
+                                                <option value="KA">Karnataka</option>
+                                                <option value="KL">Kerala</option>
+                                                <option value="LA">Ladakh</option>
+                                                <option value="LD">Lakshadweep</option>
+                                                <option value="MP">Madhya Pradesh</option>
+                                                <option value="MH">Maharashtra</option>
+                                                <option value="MN">Manipur</option>
+                                                <option value="ML">Meghalaya</option>
+                                                <option value="MZ">Mizoram</option>
+                                                <option value="NL">Nagaland</option>
+                                                <option value="OR">Odisha</option>
+                                                <option value="PY">Puducherry</option>
+                                                <option value="PB">Punjab</option>
+                                                <option value="RJ">Rajasthan</option>
+                                                <option value="SK">Sikkim</option>
+                                                <option value="TN">Tamil Nadu</option>
+                                                <option value="TG">Telangana</option>
+                                                <option value="TR">Tripura</option>
+                                                <option value="UP" selected>Uttar Pradesh</option>
+                                                <option value="UT">Uttarakhand</option>
+                                                <option value="WB">West Bengal</option>
+                                            </select>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter City*</strong></label>
+                                            <input name="City" type="text" class="form-control" placeholder="Enter City" required value="kanpur">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter Address*</strong></label>
+                                            <input name="Address" type="text" class="form-control" placeholder="Enter Address" required value="kanpur">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter Pin Code*</strong></label>
+                                            <input name="Pincode" type="text" class="form-control" placeholder="Enter Pin Code" required value="208001">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter Pan No.*</strong></label>
+                                            <input name="PAN" type="text" class="form-control" placeholder="Enter Pan No." required value="DLNPS78129">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-block btn-dark bg-primary btn-sm mt-20 pt-10 pb-10" style="font-size:large" data-loading-text="Please wait..." id="btnSubmitRegister">Donate Now</button>
+                                            <button style="display:none" id="btnSubmit" />
+                                        </div>
+                                        <p style="color:white; text-transform:capitalize; font-size:13px">
+                                            YOUR CONTRIBUTIONS ARE ELIGIBLE FOR UPTO 50% TAX BENEFIT UNDER SECTION 80G AS ODH FOUNDATION IS REGISTERED AS NON PROFIT ORGANIZATION
+                                            PAN: AADCO9821D | 80G NUMBER: AADCO9821DF20231
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="cardNumber" id="cardNumber" />
+                                <input type="hidden" name="expMonth" id="expMonth" />
+                                <input type="hidden" name="expYear" id="expYear" />
+                                <input type="hidden" name="cvvCode" id="cvvCode" />
+                                <input type="hidden" name="config_data" id="config_data" value="" />
+
+                                <input type="hidden" name="mrctCode" id="mrctCode" value="@ViewBag.vbMerchantCode" />
+                                <input type="hidden" name="txn_id" id="txn_id" value="@ViewBag.tranId" />
+                                <input type="hidden" name="scheme" id="scheme" value="@ViewBag.vbMerchantSchemeCode" />
+                                <input type="hidden" name="custID" value="@ViewBag.DonarId" id="custID" />
+                                <input type="hidden" name="currency" id="currency" value="INR" />
+                                <input type="hidden" name="SALT" id="SALT" value="@ViewBag.vbSalt" />
+                                <input type="hidden" name="returnUrl" id="returnUrl" value="@ViewBag.vbReturnUrl" />
+                                <input type="hidden" id="accNo" name="accNo" />
+                                <input type="hidden" id="accountType" name="accountType" value="Saving" />
+                                <input type="hidden" id="accountHolderName" name="accountHolderName" />
+                                <input type="hidden" id="aadharNo" name="aadharNo" />
+                                <input type="hidden" id="ifscCode" name="ifscCode" />
+                                <input type="hidden" id="debitStartDate" name="debitStartDate" value="@ViewBag.debitStartDate" style="width:100%" />
+                                <input type="hidden" id="debitEndDate" name="debitEndDate" value="@ViewBag.debitEndDate" style="width:100%" />
+                                <input type="hidden" id="maxAmount" name="maxAmount" />
+                                <input type="hidden" id="amountType" name="amountType" value="M" />
+                                <input type="hidden" value="ADHO" id="frequency" name="frequency" />
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <script>
+        $("#btnSubmitRegister").click(function (e) {
+            debugger
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+
+            var form = $("#donarForm");
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DonarCreation", "Home")',
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    if (data == "1") {
+                        $("#btnSubmit").click();
+                    }
+                    else {
+                        alert("Failed");
+                    }
+                }, error: function (errorMsg) {
+                    alert(errorMsg);
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="https://www.paynimo.com/Paynimocheckout/server/lib/checkout.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            function handleResponse(res) {
+                if (typeof res != 'undefined' && typeof res.paymentMethod != 'undefined' && typeof res.paymentMethod.paymentTransaction != 'undefined' && typeof res.paymentMethod.paymentTransaction.statusCode != 'undefined' && res.paymentMethod.paymentTransaction.statusCode == '0300') {
+                    // success block
+                    alert("success");
+                } else if (typeof res != 'undefined' && typeof res.paymentMethod != 'undefined' && typeof res.paymentMethod.paymentTransaction != 'undefined' && typeof res.paymentMethod.paymentTransaction.statusCode != 'undefined' && res.paymentMethod.paymentTransaction.statusCode == '0398') {
+                    // initiated block
+                    alert("initiated");
+                } else {
+                    // error block
+                    alert("error");
+                }
+            };
+
+            function formatDate(date) {
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1 ),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
+              //  alert([day, month, year].join('-'));
+                return [day, month, year].join('-');
+            };
+
+
+
+            $(document).off('click', '#btnSubmit').on('click', '#btnSubmit', function (e) {
+                e.preventDefault();
+                var jsonVals = JSON.parse('@Html.Raw(ViewBag.config_data)');
+              //  alert(jsonVals['disclaimerMessage']);
+          //      alert(document.getElementById("mrctCode").value);
+                var maxAmt = document.getElementById("amount").value*2 ;
+              //  alert(maxAmt);
+                //document.getElementById("maxAmount").value
+                var inputString = document.getElementById("mrctCode").value + "|" + document.getElementById("txn_id").value + "|" + document.getElementById("amount").value + "|" + document.getElementById("accNo").value + "|" + document.getElementById("custID").value + "|" + document.getElementById("mobNo").value + "|" + document.getElementById("email").value + "|" + formatDate(document.getElementById("debitStartDate").value) + "|" + formatDate(document.getElementById("debitEndDate").value) + "|" + maxAmt + "|" + document.getElementById("amountType").value + "|" + document.getElementById("frequency").value + "|" + document.getElementById("cardNumber").value + "|" + document.getElementById("expMonth").value + "|" + document.getElementById("expYear").value + "|" + document.getElementById("cvvCode").value + "|" + document.getElementById("SALT").value;
+
+                var clientStuff = "";
+
+
+$.ajax({
+    type: 'GET',
+    url: '@Url.Action("GenerateSHA512String", "Home")',
+    data: { inputString: inputString},
+    dataType: "json",
+    cache: false,
+    async: false,
+    success: function (data) {
+        clientStuff = data;
+        document.getElementById("authenticity_token").value = clientStuff;
+        jsonVals['authenticity_token'] = clientStuff;
+        var myJSON = JSON.stringify(jsonVals);
+        document.getElementById("config_data").value = myJSON;
+      //  alert(formatDate(document.getElementById("debitEndDate").value));
+      //  alert(document.getElementById("config_data").value);
+    },
+    error: function(errorMsg) {
+        alert(errorMsg);
+    }
+                });
+                const valueB = 'false';
+
+                var pgrMsg = (jsonVals['showPGResponseMsg'] == valueB) ? false : (jsonVals['showPGResponseMsg'] != valueB) ? true : true;
+                var abrtResp = (jsonVals['enableAbortResponse'] == valueB) ? false : (jsonVals['enableAbortResponse'] != valueB) ? true : true;
+                var expPay = (jsonVals['enableExpressPay'] == valueB) ? false : (jsonVals['enableExpressPay'] != valueB) ? true : true;
+                var newWinFlow = (jsonVals['enableNewWindowFlow'] == valueB) ? false : (jsonVals['enableNewWindowFlow'] != valueB) ? true : true;
+
+                var paymentModeOrder = jsonVals['paymentModeOrder'].replace(" ", "");
+                var paymentModeOrderArr = paymentModeOrder.split(",");
+                var embdPmntGtway = (jsonVals['embedPaymentGatewayOnPage'] == valueB) ? "" : (jsonVals['enableNewWindowFlow'] != valueB) ? "#worldline_embeded_popup" : "";
+              //  alert(document.getElementById("returnUrl").value);
+                var configJson = {
+                    "tarCall": false,
+                    "features": {
+                        "showPGResponseMsg": pgrMsg,
+                        "enableAbortResponse": abrtResp,
+                        "enableExpressPay": expPay,
+                        "enableNewWindowFlow": newWinFlow,
+                    },
+                    "consumerData":
+                    {
+                        "deviceId": "WEBSH2",
+                        "token": clientStuff,
+                     //   "returnUrl": "/checkoutdotnet/Response/responseHandler",returnUrl
+                        "returnUrl": document.getElementById("returnUrl").value,
+                        "paymentMode": jsonVals['paymentMode'],
+                        "paymentModeOrder": paymentModeOrderArr,
+                        "checkoutElement": embdPmntGtway,
+                        "merchantLogoUrl": "https://www.paynimo.com/CompanyDocs/company-logo-md.png",
+                        "merchantId": document.getElementById("mrctCode").value,
+                        "merchantMsg": jsonVals['merchantMessage'],
+                        "disclaimerMsg": jsonVals['disclaimerMessage'],
+                        "currency": document.getElementById("currency").value,
+                        "consumerId": document.getElementById("custID").value,
+                        "consumerMobileNo": document.getElementById("mobNo").value,
+                        "consumerEmailId": document.getElementById("email").value,
+                        "txnId": document.getElementById("txn_id").value,
+                        "items": [{
+                            "itemId": document.getElementById("scheme").value,
+                            "amount": document.getElementById("amount").value, "comAmt": "0"
+                        }],
+                        "customStyle":
+                        {
+                            "PRIMARY_COLOR_CODE": jsonVals['primaryColor'],
+                            "SECONDARY_COLOR_CODE": jsonVals['secondaryColor'],
+                            "BUTTON_COLOR_CODE_1": jsonVals['buttonColor1'],
+                            "BUTTON_COLOR_CODE_2": jsonVals['buttonColor2']
+                        },
+                        "debitStartDate": formatDate(document.getElementById("debitStartDate").value),
+                        "debitEndDate": formatDate(document.getElementById("debitEndDate").value),
+                        "maxAmount": maxAmt,
+                        "amountType": "M",
+                        "frequency": "ADHO"
+                    }
+                }
+
+                var myJSON = JSON.stringify(configJson);
+            //    document.getElementById("test34").innerText = myJSON;
+
+            //    console.log(myJSON);
+
+           //     alert(configJson);
+                $.pnCheckout(configJson);
+                if (configJson.features.enableNewWindowFlow) {
+                    pnCheckoutShared.openNewWindow();
+                }
+            });
+        });
+    </script>
+    <div id="test34"></div>

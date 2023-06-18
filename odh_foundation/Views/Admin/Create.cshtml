@@ -1,0 +1,74 @@
+﻿@using odh_foundation.Models;
+@{
+    UsersContext db = new UsersContext();
+  
+    var logo = string.Empty;
+    var companyname = string.Empty;
+    var incometype = string.Empty;
+    
+    var r = db.CompanyInfos.Single(ci => ci.Id == 1);
+    
+ 
+    logo = r.CompanyLogo;
+    companyname = r.CompanyName;
+    incometype = r.IncomeType;
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Create";
+}
+<div class="page-content">
+
+    <div class="container" style="width: 100%; padding-left: 0px; padding-right: 0px;">
+
+        <div class="page-toolbar" style="width: 100%;">
+
+            <div class="page-toolbar-block">
+                <div class="page-toolbar-title"></div>
+
+
+                <h4><b>Welcome, @r.CompanyName</b></h4>
+            </div>
+            <div style="margin-top: 0px; float: right; margin-right: 10px;">
+            </div>
+
+        </div>
+
+        <div class="widget stacked">
+
+            <div class="widget-header">
+                <i class="icon-plus"></i>
+                <h3>Create</h3>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content">
+
+                <div class="shortcuts">
+                    <a href="~/Admin/Volunteer" class="shortcut">
+                        <img alt="" src="~/Images/icon/77.png" />
+                        <span class="shortcut-label">Volunteer</span>
+                    </a>
+
+                    <a href="~/Admin/Donation" class="shortcut">
+                        <img alt="" src="~/Images/icon/operator.png" />
+                        <span class="shortcut-label">Donation</span>
+                    </a>
+
+                    
+                   
+
+
+
+                    
+					
+                </div>
+                <!-- /shortcuts -->
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+
+    </div>
+
+</div>
