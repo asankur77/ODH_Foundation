@@ -1,0 +1,141 @@
+﻿
+@using odh_foundation.Models;
+@{
+    UsersContext db = new UsersContext();
+  
+    var logo = string.Empty;
+    var companyname = string.Empty;
+    var incometype = string.Empty;
+
+    var r = db.CompanyInfos.Single(ci => ci.Id == 1);
+    logo = r.CompanyLogo;
+    companyname = r.CompanyName;
+    incometype = r.IncomeType;
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Update Menu";
+}
+
+<div class="page-content">
+
+    <div class="container" style="width: 100%; padding-left: 0px; padding-right: 0px;">
+
+        <div class="page-toolbar" style="width: 100%;">
+
+            <div class="page-toolbar-block">
+                <div class="page-toolbar-title"></div>
+
+
+                <h4><b>Welcome, @r.CompanyName</b></h4>
+            </div>
+            <div style="margin-top: 0px; float: right; margin-right: 10px;">
+            </div>
+
+        </div>
+
+        <div class="widget stacked">
+
+            <div class="widget-header">
+                <i class="icon-plus"></i>
+                <h3>Create</h3>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content">
+
+                <div class="shortcuts">
+                    <a href="~/Admin/FinancialYearUpdate" class="shortcut">
+                        <img alt="" src="~/Images/icon/36.png" />
+                        <span class="shortcut-label">Update Id Format Year</span>
+                    </a>
+                    <a href="~/Admin/TeamUpdate" class="shortcut">
+                        <img alt="" src="~/Images/icon/68.png" />
+                        <span class="shortcut-label">Team Update</span>
+
+                    </a>
+
+                     <a href="~/Admin/PressRelease" class="shortcut">
+                        <img alt="" src="~/Images/icon/block.png" />
+                        <span class="shortcut-label">Press Release</span>
+                    </a>
+                   @* <a href="~/Admin/UpdateOperator" class="shortcut">
+                        <img alt="" src="~/Images/icon/69.png" />
+                        <span class="shortcut-label">Collection Point</span>
+                    </a>
+
+                    <a href="~/Admin/UpdateHR" class="shortcut">
+                        <img alt="" src="~/Images/icon/68.png" />
+                        <span class="shortcut-label">HR</span>
+                    </a>
+                    <a href="~/Admin/UpdatePlan" class="shortcut">
+                        <img alt="" src="~/Images/icon/10.png" />
+                        <span class="shortcut-label">@mr.planname Category</span>
+                    </a>
+                      <a href="~/Admin/UpdateBlock" class="shortcut">
+                        <img alt="" src="~/Images/icon/block.png" />
+                        <span class="shortcut-label">Block</span>
+                    </a>
+                    <a href="~/Admin/UpdatePlotLimit" class="shortcut">
+                        <img alt="" src="~/Images/icon/limit.jpg" />
+                        <span class="shortcut-label">Edit Plot Limit</span>
+                    </a>
+                    <a href="~/Admin/EMIMaster" class="shortcut">
+                        <img alt="" src="~/Images/icon/10.png" />
+                        <span class="shortcut-label">EMI Master</span>
+                    </a>
+                  
+
+                    <a href="~/Admin/UpdateRank" class="shortcut">
+                        <img alt="" src="~/Images/icon/rank.png" />
+                        <span class="shortcut-label">@mr.rankname</span>
+                    </a>
+                    <a href="~/Admin/UpdateExpense" class="shortcut">
+                        <img alt="" src="~/Images/icon/exp.png" />
+                        <span class="shortcut-label">Expense</span>
+                    </a>
+
+                    <a href="~/Admin/UpdateMember" class="shortcut">
+                        <img alt="" src="~/Images/icon/MemberIcon.png" />
+                        <span class="shortcut-label">Member</span>
+                    </a>
+                     <a href="~/Admin/UpdateAccount" class="shortcut">
+							<img alt="" src="~/Images/icon/savingacc.jpg" />
+							<span class="shortcut-label">Saving Account</span>
+                            
+						</a>
+                    <a href="~/Admin/UpdateAgentForm" class="shortcut">
+                        <img alt="" src="~/Images/icon/70.png" />
+                        <span class="shortcut-label">@mr.agentname</span>
+                    </a>
+                    <a href="~/Admin/UpdateBond" class="shortcut">
+                        <img alt="" src="~/Images/icon/71.png" />
+                        <span class="shortcut-label">@mr.custname</span>
+                    </a>
+                  @*  <a href="~/Admin/UpdateManualBond" class="shortcut">
+                        <img alt="" src="~/Images/icon/71.png" />
+                        <span class="shortcut-label">Manual @mr.custname</span>
+                    </a>
+                    <a href="~/Admin/UpdateAdjustmentBond" class="shortcut">
+                        <img alt="" src="~/Images/icon/71.png" />
+                        <span class="shortcut-label">Adjustment @mr.custname</span>
+                    </a>*@
+                </div>
+                <!-- /shortcuts -->
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+
+    </div>
+
+</div>
+  
+
+
+            
+                   
+
+
+
+           

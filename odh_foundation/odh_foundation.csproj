@@ -23,6 +23,8 @@
     <TargetFrameworkProfile />
     <Use64BitIISExpress />
     <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +34,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,15 +44,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -184,6 +190,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="CReport\Income Certificate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Income Certificate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -224,12 +236,69 @@
     <Compile Include="Migrations\202306180122047_dgsdfg.Designer.cs">
       <DependentUpon>202306180122047_dgsdfg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306210335335_abc1.cs" />
+    <Compile Include="Migrations\202306210335335_abc1.designer.cs">
+      <DependentUpon>202306210335335_abc1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307030533066_contacttab.cs" />
+    <Compile Include="Migrations\202307030533066_contacttab.designer.cs">
+      <DependentUpon>202307030533066_contacttab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307030805284_aadhar.cs" />
+    <Compile Include="Migrations\202307030805284_aadhar.designer.cs">
+      <DependentUpon>202307030805284_aadhar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307030831406_title.cs" />
+    <Compile Include="Migrations\202307030831406_title.designer.cs">
+      <DependentUpon>202307030831406_title.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307071032184_expense.cs" />
+    <Compile Include="Migrations\202307071032184_expense.designer.cs">
+      <DependentUpon>202307071032184_expense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307112001132_subscriber.cs" />
+    <Compile Include="Migrations\202307112001132_subscriber.designer.cs">
+      <DependentUpon>202307112001132_subscriber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307112013429_fyear.cs" />
+    <Compile Include="Migrations\202307112013429_fyear.designer.cs">
+      <DependentUpon>202307112013429_fyear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307150543297_fromattabnew.cs" />
+    <Compile Include="Migrations\202307150543297_fromattabnew.designer.cs">
+      <DependentUpon>202307150543297_fromattabnew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307150550487_gg.cs" />
+    <Compile Include="Migrations\202307150550487_gg.designer.cs">
+      <DependentUpon>202307150550487_gg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307150554475_financialyeartab.cs" />
+    <Compile Include="Migrations\202307150554475_financialyeartab.designer.cs">
+      <DependentUpon>202307150554475_financialyeartab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307181426323_newtab.cs" />
+    <Compile Include="Migrations\202307181426323_newtab.Designer.cs">
+      <DependentUpon>202307181426323_newtab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307201755393_newfild.cs" />
+    <Compile Include="Migrations\202307201755393_newfild.Designer.cs">
+      <DependentUpon>202307201755393_newfild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202307201820486_messagetab.cs" />
+    <Compile Include="Migrations\202307201820486_messagetab.Designer.cs">
+      <DependentUpon>202307201820486_messagetab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\GetLogged.cs" />
     <Compile Include="Models\MyClass.cs" />
     <Compile Include="Models\Reports.cs" />
+    <Compile Include="Models\TempModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\Dataset\invoice_dataset.cs">
+      <DependentUpon>invoice_dataset.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\Dataset\invoice_dataset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -302,6 +371,126 @@
     <Content Include="Content\css\ui-lightness\images\ui-icons_ffd27a_256x240.html" />
     <Content Include="Content\css\ui-lightness\images\ui-icons_ffffff_256x240.html" />
     <Content Include="Content\css\ui-lightness\jquery-ui-1.10.0.custom.min.css" />
+    <Content Include="Content\datepicker\calendar-blue.gif" />
+    <Content Include="Content\datepicker\calendar-green.gif" />
+    <Content Include="Content\datepicker\calendar.gif" />
+    <Content Include="Content\datepicker\datepickBasic.html" />
+    <Content Include="Content\datepicker\flora.datepick.css" />
+    <Content Include="Content\datepicker\humanity.datepick.css" />
+    <Content Include="Content\datepicker\jquery.datepick-af.js" />
+    <Content Include="Content\datepicker\jquery.datepick-am.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ar-DZ.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ar-EG.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ar.js" />
+    <Content Include="Content\datepicker\jquery.datepick-az.js" />
+    <Content Include="Content\datepicker\jquery.datepick-bg.js" />
+    <Content Include="Content\datepicker\jquery.datepick-bs.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ca.js" />
+    <Content Include="Content\datepicker\jquery.datepick-cs.js" />
+    <Content Include="Content\datepicker\jquery.datepick-da.js" />
+    <Content Include="Content\datepicker\jquery.datepick-de-CH.js" />
+    <Content Include="Content\datepicker\jquery.datepick-de.js" />
+    <Content Include="Content\datepicker\jquery.datepick-el.js" />
+    <Content Include="Content\datepicker\jquery.datepick-en-AU.js" />
+    <Content Include="Content\datepicker\jquery.datepick-en-GB.js" />
+    <Content Include="Content\datepicker\jquery.datepick-en-NZ.js" />
+    <Content Include="Content\datepicker\jquery.datepick-eo.js" />
+    <Content Include="Content\datepicker\jquery.datepick-es-AR.js" />
+    <Content Include="Content\datepicker\jquery.datepick-es-PE.js" />
+    <Content Include="Content\datepicker\jquery.datepick-es.js" />
+    <Content Include="Content\datepicker\jquery.datepick-et.js" />
+    <Content Include="Content\datepicker\jquery.datepick-eu.js" />
+    <Content Include="Content\datepicker\jquery.datepick-fa.js" />
+    <Content Include="Content\datepicker\jquery.datepick-fi.js" />
+    <Content Include="Content\datepicker\jquery.datepick-fo.js" />
+    <Content Include="Content\datepicker\jquery.datepick-fr-CH.js" />
+    <Content Include="Content\datepicker\jquery.datepick-fr.js" />
+    <Content Include="Content\datepicker\jquery.datepick-gl.js" />
+    <Content Include="Content\datepicker\jquery.datepick-gu.js" />
+    <Content Include="Content\datepicker\jquery.datepick-he.js" />
+    <Content Include="Content\datepicker\jquery.datepick-hi-IN.js" />
+    <Content Include="Content\datepicker\jquery.datepick-hi.js" />
+    <Content Include="Content\datepicker\jquery.datepick-hr.js" />
+    <Content Include="Content\datepicker\jquery.datepick-hu.js" />
+    <Content Include="Content\datepicker\jquery.datepick-hy.js" />
+    <Content Include="Content\datepicker\jquery.datepick-id.js" />
+    <Content Include="Content\datepicker\jquery.datepick-is.js" />
+    <Content Include="Content\datepicker\jquery.datepick-it.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ja.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ka.js" />
+    <Content Include="Content\datepicker\jquery.datepick-km.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ko.js" />
+    <Content Include="Content\datepicker\jquery.datepick-lt.js" />
+    <Content Include="Content\datepicker\jquery.datepick-lv.js" />
+    <Content Include="Content\datepicker\jquery.datepick-me-ME.js" />
+    <Content Include="Content\datepicker\jquery.datepick-me.js" />
+    <Content Include="Content\datepicker\jquery.datepick-mk.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ml.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ms.js" />
+    <Content Include="Content\datepicker\jquery.datepick-mt.js" />
+    <Content Include="Content\datepicker\jquery.datepick-nl-BE.js" />
+    <Content Include="Content\datepicker\jquery.datepick-nl.js" />
+    <Content Include="Content\datepicker\jquery.datepick-no.js" />
+    <Content Include="Content\datepicker\jquery.datepick-pl.js" />
+    <Content Include="Content\datepicker\jquery.datepick-pt-BR.js" />
+    <Content Include="Content\datepicker\jquery.datepick-pt.js" />
+    <Content Include="Content\datepicker\jquery.datepick-rm.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ro.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ru.js" />
+    <Content Include="Content\datepicker\jquery.datepick-sk.js" />
+    <Content Include="Content\datepicker\jquery.datepick-sl.js" />
+    <Content Include="Content\datepicker\jquery.datepick-sq.js" />
+    <Content Include="Content\datepicker\jquery.datepick-sr-SR.js" />
+    <Content Include="Content\datepicker\jquery.datepick-sr.js" />
+    <Content Include="Content\datepicker\jquery.datepick-sv.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ta.js" />
+    <Content Include="Content\datepicker\jquery.datepick-th.js" />
+    <Content Include="Content\datepicker\jquery.datepick-tr.js" />
+    <Content Include="Content\datepicker\jquery.datepick-uk.js" />
+    <Content Include="Content\datepicker\jquery.datepick-ur.js" />
+    <Content Include="Content\datepicker\jquery.datepick-vi.js" />
+    <Content Include="Content\datepicker\jquery.datepick-zh-CN.js" />
+    <Content Include="Content\datepicker\jquery.datepick-zh-HK.js" />
+    <Content Include="Content\datepicker\jquery.datepick-zh-TW.js" />
+    <Content Include="Content\datepicker\jquery.datepick.css" />
+    <Content Include="Content\datepicker\jquery.datepick.ext.js" />
+    <Content Include="Content\datepicker\jquery.datepick.ext.min.js" />
+    <Content Include="Content\datepicker\jquery.datepick.js" />
+    <Content Include="Content\datepicker\jquery.datepick.lang.js" />
+    <Content Include="Content\datepicker\jquery.datepick.lang.min.js" />
+    <Content Include="Content\datepicker\jquery.datepick.min.js" />
+    <Content Include="Content\datepicker\jquery.datepick.validation.js" />
+    <Content Include="Content\datepicker\jquery.datepick.validation.min.js" />
+    <Content Include="Content\datepicker\jquery.plugin.js" />
+    <Content Include="Content\datepicker\jquery.plugin.min.js" />
+    <Content Include="Content\datepicker\redmond.datepick.css" />
+    <Content Include="Content\datepicker\smoothness.datepick.css" />
+    <Content Include="Content\datepicker\ui-black-tie.datepick.css" />
+    <Content Include="Content\datepicker\ui-blitzer.datepick.css" />
+    <Content Include="Content\datepicker\ui-cupertino.datepick.css" />
+    <Content Include="Content\datepicker\ui-dark-hive.datepick.css" />
+    <Content Include="Content\datepicker\ui-dot-luv.datepick.css" />
+    <Content Include="Content\datepicker\ui-eggplant.datepick.css" />
+    <Content Include="Content\datepicker\ui-excite-bike.datepick.css" />
+    <Content Include="Content\datepicker\ui-flick.datepick.css" />
+    <Content Include="Content\datepicker\ui-hot-sneaks.datepick.css" />
+    <Content Include="Content\datepicker\ui-humanity.datepick.css" />
+    <Content Include="Content\datepicker\ui-le-frog.datepick.css" />
+    <Content Include="Content\datepicker\ui-mint-choc.datepick.css" />
+    <Content Include="Content\datepicker\ui-overcast.datepick.css" />
+    <Content Include="Content\datepicker\ui-pepper-grinder.datepick.css" />
+    <Content Include="Content\datepicker\ui-redmond.datepick.css" />
+    <Content Include="Content\datepicker\ui-smoothness.datepick.css" />
+    <Content Include="Content\datepicker\ui-south-street.datepick.css" />
+    <Content Include="Content\datepicker\ui-start.datepick.css" />
+    <Content Include="Content\datepicker\ui-sunny.datepick.css" />
+    <Content Include="Content\datepicker\ui-swanky-purse.datepick.css" />
+    <Content Include="Content\datepicker\ui-trontastic.datepick.css" />
+    <Content Include="Content\datepicker\ui-ui-darkness.datepick.css" />
+    <Content Include="Content\datepicker\ui-ui-lightness.datepick.css" />
+    <Content Include="Content\datepicker\ui-vader.datepick.css" />
+    <Content Include="Content\datepicker\ui.datepick.css" />
+    <Content Include="Content\download.png" />
     <Content Include="Content\failed.png" />
     <Content Include="Content\Home\ajax-load\donation-form.html" />
     <Content Include="Content\Home\ajax-load\form-appointment.html" />
@@ -971,6 +1160,7 @@
     <Content Include="Content\Home\images\works\7.jpg" />
     <Content Include="Content\Home\images\works\8.jpg" />
     <Content Include="Content\Home\images\works\9.jpg" />
+    <Content Include="Content\Home\js\Admin.js" />
     <Content Include="Content\Home\js\bootstrap.min.js" />
     <Content Include="Content\Home\js\calendar-events-data.js" />
     <Content Include="Content\Home\js\chart.js" />
@@ -1117,6 +1307,135 @@
     <Content Include="Content\css\fonts\glyphicons-halflings-regulard41d.eot" />
     <Content Include="App_Data\output.json" />
     <None Include="Properties\PublishProfiles\ODHNGO.pubxml" />
+    <Content Include="Images\icon\1.png" />
+    <Content Include="Images\icon\10.png" />
+    <Content Include="Images\icon\11.png" />
+    <Content Include="Images\icon\15.png" />
+    <Content Include="Images\icon\16.png" />
+    <Content Include="Images\icon\17.png" />
+    <Content Include="Images\icon\18.png" />
+    <Content Include="Images\icon\19.png" />
+    <Content Include="Images\icon\2.png" />
+    <Content Include="Images\icon\20.png" />
+    <Content Include="Images\icon\21.png" />
+    <Content Include="Images\icon\22.png" />
+    <Content Include="Images\icon\26.png" />
+    <Content Include="Images\icon\27.png" />
+    <Content Include="Images\icon\28.png" />
+    <Content Include="Images\icon\29.png" />
+    <Content Include="Images\icon\32.png" />
+    <Content Include="Images\icon\33.png" />
+    <Content Include="Images\icon\34.png" />
+    <Content Include="Images\icon\35.png" />
+    <Content Include="Images\icon\36.png" />
+    <Content Include="Images\icon\37.png" />
+    <Content Include="Images\icon\38.png" />
+    <Content Include="Images\icon\39.png" />
+    <Content Include="Images\icon\4.png" />
+    <Content Include="Images\icon\42.png" />
+    <Content Include="Images\icon\43.png" />
+    <Content Include="Images\icon\45.png" />
+    <Content Include="Images\icon\46.png" />
+    <Content Include="Images\icon\48.png" />
+    <Content Include="Images\icon\5.png" />
+    <Content Include="Images\icon\50.png" />
+    <Content Include="Images\icon\51.png" />
+    <Content Include="Images\icon\52.PNG" />
+    <Content Include="Images\icon\53.png" />
+    <Content Include="Images\icon\54.png" />
+    <Content Include="Images\icon\55.png" />
+    <Content Include="Images\icon\56.png" />
+    <Content Include="Images\icon\57.png" />
+    <Content Include="Images\icon\58.png" />
+    <Content Include="Images\icon\59.png" />
+    <Content Include="Images\icon\60.png" />
+    <Content Include="Images\icon\61.png" />
+    <Content Include="Images\icon\62.png" />
+    <Content Include="Images\icon\63.png" />
+    <Content Include="Images\icon\64.png" />
+    <Content Include="Images\icon\65.png" />
+    <Content Include="Images\icon\66.png" />
+    <Content Include="Images\icon\67.png" />
+    <Content Include="Images\icon\68.png" />
+    <Content Include="Images\icon\69.png" />
+    <Content Include="Images\icon\7.png" />
+    <Content Include="Images\icon\70.png" />
+    <Content Include="Images\icon\71.png" />
+    <Content Include="Images\icon\72.png" />
+    <Content Include="Images\icon\73.png" />
+    <Content Include="Images\icon\74.png" />
+    <Content Include="Images\icon\75.png" />
+    <Content Include="Images\icon\76.png" />
+    <Content Include="Images\icon\77.png" />
+    <Content Include="Images\icon\9.png" />
+    <Content Include="Images\icon\accountant.jpg" />
+    <Content Include="Images\icon\addsalary.png" />
+    <Content Include="Images\icon\adjust.png" />
+    <Content Include="Images\icon\advancepay.jpg" />
+    <Content Include="Images\icon\allot.png" />
+    <Content Include="Images\icon\annual_report.jpg" />
+    <Content Include="Images\icon\Approved-Stamp-Icon.png" />
+    <Content Include="Images\icon\attendance.jpg" />
+    <Content Include="Images\icon\Attendance_Icon1.jpg" />
+    <Content Include="Images\icon\bank.jpg" />
+    <Content Include="Images\icon\block.png" />
+    <Content Include="Images\icon\bulkidcard.png" />
+    <Content Include="Images\icon\bulkreceipt.png" />
+    <Content Include="Images\icon\bvcollection.jpg" />
+    <Content Include="Images\icon\cheque.jpg" />
+    <Content Include="Images\icon\Club.png" />
+    <Content Include="Images\icon\comm.jpg" />
+    <Content Include="Images\icon\Contributor.jpg" />
+    <Content Include="Images\icon\daily.jpg" />
+    <Content Include="Images\icon\daily.png" />
+    <Content Include="Images\icon\datewise.png" />
+    <Content Include="Images\icon\deactive.png" />
+    <Content Include="Images\icon\Department.jpg" />
+    <Content Include="Images\icon\designation.png" />
+    <Content Include="Images\icon\ditribitionshare.png" />
+    <Content Include="Images\icon\Down.png" />
+    <Content Include="Images\icon\download.png" />
+    <Content Include="Images\icon\employee.png" />
+    <Content Include="Images\icon\exp.png" />
+    <Content Include="Images\icon\fd.png" />
+    <Content Include="Images\icon\formicon.png" />
+    <Content Include="Images\icon\futureplans.jpg" />
+    <Content Include="Images\icon\gallery.jpg" />
+    <Content Include="Images\icon\gullak.png" />
+    <Content Include="Images\icon\head.jpg" />
+    <Content Include="Images\icon\iitkanpursalran.jpg" />
+    <Content Include="Images\icon\images.png" />
+    <Content Include="Images\icon\inout.png" />
+    <Content Include="Images\icon\latefine.png" />
+    <Content Include="Images\icon\leave.png" />
+    <Content Include="Images\icon\maturity.png" />
+    <Content Include="Images\icon\MemberIcon.png" />
+    <Content Include="Images\icon\MonthlyIcon.png" />
+    <Content Include="Images\icon\operator.png" />
+    <Content Include="Images\icon\paysalary.png" />
+    <Content Include="Images\icon\pc.png" />
+    <Content Include="Images\icon\pension.jpg" />
+    <Content Include="Images\icon\permission.png" />
+    <Content Include="Images\icon\planbusi.png" />
+    <Content Include="Images\icon\printicon.png" />
+    <Content Include="Images\icon\quota_icon.gif" />
+    <Content Include="Images\icon\rank.png" />
+    <Content Include="Images\icon\rd.jpg" />
+    <Content Include="Images\icon\receipt.jpg" />
+    <Content Include="Images\icon\registrationicon.gif" />
+    <Content Include="Images\icon\savingacc.jpg" />
+    <Content Include="Images\icon\sendsms.jpg" />
+    <Content Include="Images\icon\Shareicon.png" />
+    <Content Include="Images\icon\sharelisticon.png" />
+    <Content Include="Images\icon\Share_Certificate.png" />
+    <Content Include="Images\icon\spotcomm.jpg" />
+    <Content Include="Images\icon\TDS.png" />
+    <Content Include="Images\icon\transfericon.png" />
+    <Content Include="Images\icon\transfer_arrow.png" />
+    <Content Include="Images\icon\upline.png" />
+    <Content Include="Images\icon\voucher.png" />
+    <Content Include="Images\icon\vouchers.png" />
+    <Content Include="Images\icon\welcomeletter.png" />
     <Content Include="Report\Dataset\invoice_dataset.xsc">
       <DependentUpon>invoice_dataset.xsd</DependentUpon>
     </Content>
@@ -1143,7 +1462,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1209,12 +1530,49 @@
     <Content Include="Views\Admin\AddExpense.cshtml" />
     <Content Include="Views\Admin\AddHead.cshtml" />
     <Content Include="Views\Home\Successfull.cshtml" />
+    <Content Include="Views\Admin\AllReport.cshtml" />
+    <Content Include="Views\Admin\DailyExpense.cshtml" />
+    <Content Include="Views\Admin\HeadWiseExpense.cshtml" />
+    <Content Include="Views\Admin\VolunteerList.cshtml" />
+    <Content Include="Views\Admin\Enquiry_list.cshtml" />
+    <Content Include="Views\Admin\DonationList.cshtml" />
+    <Content Include="Views\Home\AbHarKoiPadega.cshtml" />
+    <Content Include="Views\Home\CharitableSchool.cshtml" />
+    <Content Include="Views\Home\CharitableHospital.cshtml" />
+    <Content Include="Views\Home\MedicalCamp.cshtml" />
+    <Content Include="Views\Home\AbBaariHaiHamari.cshtml" />
+    <Content Include="Views\Admin\SubscriberList.cshtml" />
+    <Content Include="Views\Admin\AddVolunteer.cshtml" />
+    <Content Include="Views\Admin\AddDonor.cshtml" />
+    <Content Include="Views\Admin\UpdateMenu.cshtml" />
+    <Content Include="Views\Admin\FinancialYearUpdate.cshtml" />
+    <Content Include="Views\Admin\BulkSms.cshtml" />
+    <Content Include="Views\Admin\BulkEmail.cshtml" />
+    <Content Include="Views\Admin\PrintSection.cshtml" />
+    <Content Include="Views\Admin\PrintCertificate.cshtml" />
+    <Content Include="Views\Admin\Print80GReciept.cshtml" />
+    <Content Include="Views\Admin\PressRelease.cshtml" />
+    <Content Include="Views\Admin\TeamUpdate.cshtml" />
+    <Content Include="Views\Admin\TenBDReport.cshtml" />
+    <Content Include="Views\Admin\CreateOperator.cshtml" />
+    <Content Include="Views\Admin\OperatorList.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Folder Include="Aadhar\" />
+    <Folder Include="Photo\" />
+    <Folder Include="PressRelease\" />
+    <Folder Include="TeamImage\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CReport\Income Certificate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Income Certificate.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202306031107574_start.resx">
       <DependentUpon>202306031107574_start.cs</DependentUpon>
     </EmbeddedResource>
@@ -1242,8 +1600,53 @@
     <EmbeddedResource Include="Migrations\202306180122047_dgsdfg.resx">
       <DependentUpon>202306180122047_dgsdfg.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306210335335_abc1.resx">
+      <DependentUpon>202306210335335_abc1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307030533066_contacttab.resx">
+      <DependentUpon>202307030533066_contacttab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307030805284_aadhar.resx">
+      <DependentUpon>202307030805284_aadhar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307030831406_title.resx">
+      <DependentUpon>202307030831406_title.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307071032184_expense.resx">
+      <DependentUpon>202307071032184_expense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307112001132_subscriber.resx">
+      <DependentUpon>202307112001132_subscriber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307112013429_fyear.resx">
+      <DependentUpon>202307112013429_fyear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307150543297_fromattabnew.resx">
+      <DependentUpon>202307150543297_fromattabnew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307150550487_gg.resx">
+      <DependentUpon>202307150550487_gg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307150554475_financialyeartab.resx">
+      <DependentUpon>202307150554475_financialyeartab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307181426323_newtab.resx">
+      <DependentUpon>202307181426323_newtab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307201755393_newfild.resx">
+      <DependentUpon>202307201755393_newfild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202307201820486_messagetab.resx">
+      <DependentUpon>202307201820486_messagetab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Dataset\invoice_dataset.resx">
+      <DependentUpon>invoice_dataset.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Rdlc\Certificate.rdlc" />
     <EmbeddedResource Include="Report\Rdlc\invoice.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1261,7 +1664,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>3089</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:52238/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

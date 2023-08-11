@@ -1,7 +1,7 @@
 ﻿@using odh_foundation.Models;
 @{
     UsersContext db = new UsersContext();
-  
+   
     var logo = string.Empty;
     var companyname = string.Empty;
     var incometype = string.Empty;
@@ -26,7 +26,7 @@
                 <div class="page-toolbar-title"></div>
 
 
-                <h4><b>Welcome, @r.CompanyName</b></h4>
+                <h4><b>Welcome, @r.CompanyName</b></h4> 
             </div>
             <div style="margin-top: 0px; float: right; margin-right: 10px;">
             </div>
@@ -42,16 +42,20 @@
             <!-- /widget-header -->
 
             <div class="widget-content">
-
+                 
                 <div class="shortcuts">
-                    <a href="~/Admin/Volunteer" class="shortcut">
+                    <a href="~/Admin/CreateOperator" class="shortcut">
+                        <img alt="" src="~/Images/icon/operator.png" />
+                        <span class="shortcut-label">Operator</span>
+                    </a>
+                    <a href="~/Admin/AddVolunteer" class="shortcut">
                         <img alt="" src="~/Images/icon/77.png" />
-                        <span class="shortcut-label">Volunteer</span>
+                        <span class="shortcut-label">Add Volunteer</span>
                     </a>
 
-                    <a href="~/Admin/Donation" class="shortcut">
+                    <a href="~/Admin/AddDonor" class="shortcut">
                         <img alt="" src="~/Images/icon/operator.png" />
-                        <span class="shortcut-label">Donation</span>
+                        <span class="shortcut-label">Add Donation</span>
                     </a>
 
                     

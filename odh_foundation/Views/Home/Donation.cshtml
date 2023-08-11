@@ -1,20 +1,816 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Donation";
+    var cause = Convert.ToString(ViewData["cause"]);
 }
+<script>
+        $(function() {
+            $('input').keyup(function () {
+                this.value = this.value.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
+      
+            });
+        });
+    </script> 
+    <script  type="text/javascript">  
+        
 
+        @*function displayresult() {
+            document.getElementById("supporttype").value= @cause 
+        }*@
+
+
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+        }
+        window.onload=function(){
+            displayresult();
+        }
+    </script> 
 <style>
     .box {
         box-shadow: 1px 15px 26px 9px rgba(168,158,168,1);
     }
 </style>
+
 <script>
 
+    $(document).ready(function () {
+        ChangeSupportType();
+    });
+
+    function ChangeSupportType() {
+        var supportcause = document.getElementById("supporttype");
+        var selectedText = supportcause.options[supportcause.selectedIndex].text;
+        if (selectedText  == "Ab Har Koi Padhega") 
+        {
+            ///amountdivtag
+            $("#SanitoryPadsA").hide();
+            $("#BedA").hide();
+            $("#MedicalCampA").hide();
+            $("#PadhegaA").show();
+            $("#GirlsA").hide();
+            $("#SchoolA").hide();
+            $("#LivelihoodA").hide();
+            $("#amount").hide();
+            $("#custom").hide();
+
+
+            ////////text divtag
+            $("#SanitoryPadsT").hide();
+            $("#BedT").hide();
+            $("#MedicalCampT").hide();
+            $("#PadhegaT").hide();
+            $("#GirlsT").hide();
+            $("#SchoolT").hide();
+            $("#LivelihoodT").hide();
+               
+                
+          
+        }
+        else  if (selectedText == "Ab Baari Hai Hamari") {
+            $("#SanitoryPadsA").hide();
+            $("#BedA").hide();
+            $("#MedicalCampA").hide();
+            $("#PadhegaA").hide();
+            $("#GirlsA").hide();
+            $("#SchoolA").hide();
+            $("#LivelihoodA").show();
+            $("#amount").hide();
+            $("#custom").hide();
+            ////////text divtag
+            $("#SanitoryPadsT").hide();
+            $("#BedT").hide();
+            $("#MedicalCampT").hide();
+            $("#PadhegaT").hide();
+            $("#GirlsT").hide();
+            $("#SchoolT").hide();
+            $("#LivelihoodT").hide();
+
+
+        }
+        else  if (selectedText == "Girl's Education") {
+            $("#SanitoryPadsA").hide();
+            $("#BedA").hide();
+            $("#MedicalCampA").hide();
+            $("#PadhegaA").hide();
+            $("#GirlsA").show();
+            $("#SchoolA").hide();
+            $("#LivelihoodA").hide();
+            $("#amount").hide();
+            $("#custom").hide();
+            ////////text divtag
+            $("#SanitoryPadsT").hide();
+            $("#BedT").hide();
+            $("#MedicalCampT").hide();
+            $("#PadhegaT").hide();
+            $("#GirlsT").hide();
+            $("#SchoolT").hide();
+            $("#LivelihoodT").hide();
+
+        }
+        else  if (selectedText == "Sanitary Pads Distribution For Poor Women") {
+            $("#SanitoryPadsA").show();
+            $("#BedA").hide();
+            $("#MedicalCampA").hide();
+            $("#PadhegaA").hide();
+            $("#GirlsA").hide();
+            $("#SchoolA").hide();
+            $("#LivelihoodA").hide();
+            $("#amount").hide();
+            $("#custom").hide();
+            ////////text divtag
+            $("#SanitoryPadsT").hide();
+            $("#BedT").hide();
+            $("#MedicalCampT").hide();
+            $("#PadhegaT").hide();
+            $("#GirlsT").hide();
+            $("#SchoolT").hide();
+            $("#LivelihoodT").hide();
+        }
+        else  if (selectedText == "100 Bed Charitable Hospital") {
+            $("#SanitoryPadsA").hide();
+            $("#BedA").show();
+            $("#MedicalCampA").hide();
+            $("#PadhegaA").hide();
+            $("#GirlsA").hide();
+            $("#SchoolA").hide();
+            $("#LivelihoodA").hide();
+            $("#amount").hide();
+            $("#custom").hide();
+            ////////text divtag
+            $("#SanitoryPadsT").hide();
+            $("#BedT").hide();
+            $("#MedicalCampT").hide();
+            $("#PadhegaT").hide();
+            $("#GirlsT").hide();
+            $("#SchoolT").hide();
+            $("#LivelihoodT").hide();
+        }
+        else  if (selectedText == "Weekly Medical Camp In Rural Areas") {
+            $("#SanitoryPadsA").hide();
+            $("#BedA").hide();
+            $("#MedicalCampA").show();
+            $("#PadhegaA").hide();
+            $("#GirlsA").hide();
+            $("#SchoolA").hide();
+            $("#LivelihoodA").hide();
+            $("#amount").hide();
+            $("#custom").hide();
+            ////////text divtag
+            $("#SanitoryPadsT").hide();
+            $("#BedT").hide();
+            $("#MedicalCampT").hide();
+            $("#PadhegaT").hide();
+            $("#GirlsT").hide();
+            $("#SchoolT").hide();
+            $("#LivelihoodT").hide();
+        }
+        else  if (selectedText == "Charitable Public School") {
+            $("#SanitoryPadsA").hide();
+            $("#BedA").hide();
+            $("#MedicalCampA").hide();
+            $("#PadhegaA").hide();
+            $("#GirlsA").hide();
+            $("#SchoolA").show();
+            $("#LivelihoodA").hide();
+            $("#amount").hide();
+            $("#custom").hide();
+            ////////text divtag
+            $("#SanitoryPadsT").hide();
+            $("#BedT").hide();
+            $("#MedicalCampT").hide();
+            $("#PadhegaT").hide();
+            $("#GirlsT").hide();
+            $("#SchoolT").hide();
+            $("#LivelihoodT").hide();
+        }
+        else {
+            $("#SanitoryPadsA").hide();
+            $("#BedA").hide();
+            $("#MedicalCampA").hide();
+            $("#PadhegaA").hide();
+            $("#GirlsA").hide();
+            $("#SchoolA").hide();
+            $("#LivelihoodA").hide();
+            $("#amount").hide();
+            $("#custom").hide();
+            ////////text divtag
+            $("#SanitoryPadsT").hide();
+            $("#BedT").hide();
+            $("#MedicalCampT").hide();
+            $("#PadhegaT").hide();
+            $("#GirlsT").hide();
+            $("#SchoolT").hide();
+            $("#LivelihoodT").hide();
+        }
+       
+    }
+
+    //$(function () {
+    //    $("#supporttype").change(function() {
+    //        debugger
+    //        var supportcause = document.getElementById("supporttype");
+    //        var selectedText = supportcause.options[supportcause.selectedIndex].text;
+    //        if (selectedText  == "Ab Har Koi Padhega") 
+    //        {
+    //            ///amountdivtag
+    //            $("#SanitoryPadsA").hide();
+    //            $("#BedA").hide();
+    //            $("#MedicalCampA").hide();
+    //            $("#PadhegaA").show();
+    //            $("#GirlsA").hide();
+    //            $("#SchoolA").hide();
+    //            $("#LivelihoodA").hide();
+    //            $("#amount").hide();
+    //            $("#custom").hide();
+
+
+    //            ////////text divtag
+    //            $("#SanitoryPadsT").hide();
+    //            $("#BedT").hide();
+    //            $("#MedicalCampT").hide();
+    //            $("#PadhegaT").hide();
+    //            $("#GirlsT").hide();
+    //            $("#SchoolT").hide();
+    //            $("#LivelihoodT").hide();
+               
+                
+          
+    //        }
+    //        else  if (selectedText == "Ab Baari Hai Hamari") {
+    //            $("#SanitoryPadsA").hide();
+    //            $("#BedA").hide();
+    //            $("#MedicalCampA").hide();
+    //            $("#PadhegaA").hide();
+    //            $("#GirlsA").hide();
+    //            $("#SchoolA").hide();
+    //            $("#LivelihoodA").show();
+    //            $("#amount").hide();
+    //            $("#custom").hide();
+    //            ////////text divtag
+    //            $("#SanitoryPadsT").hide();
+    //            $("#BedT").hide();
+    //            $("#MedicalCampT").hide();
+    //            $("#PadhegaT").hide();
+    //            $("#GirlsT").hide();
+    //            $("#SchoolT").hide();
+    //            $("#LivelihoodT").hide();
+
+
+    //        }
+    //        else  if (selectedText == "Girl's Education") {
+    //             $("#SanitoryPadsA").hide();
+    //             $("#BedA").hide();
+    //             $("#MedicalCampA").hide();
+    //             $("#PadhegaA").hide();
+    //             $("#GirlsA").show();
+    //             $("#SchoolA").hide();
+    //             $("#LivelihoodA").hide();
+    //             $("#amount").hide();
+    //             $("#custom").hide();
+    //            ////////text divtag
+    //             $("#SanitoryPadsT").hide();
+    //             $("#BedT").hide();
+    //             $("#MedicalCampT").hide();
+    //             $("#PadhegaT").hide();
+    //             $("#GirlsT").hide();
+    //             $("#SchoolT").hide();
+    //             $("#LivelihoodT").hide();
+
+    //         }
+    //        else  if (selectedText == "Sanitary Pads Distribution For Poor Women") {
+    //             $("#SanitoryPadsA").show();
+    //             $("#BedA").hide();
+    //             $("#MedicalCampA").hide();
+    //             $("#PadhegaA").hide();
+    //             $("#GirlsA").hide();
+    //             $("#SchoolA").hide();
+    //             $("#LivelihoodA").hide();
+    //             $("#amount").hide();
+    //             $("#custom").hide();
+    //            ////////text divtag
+    //             $("#SanitoryPadsT").hide();
+    //             $("#BedT").hide();
+    //             $("#MedicalCampT").hide();
+    //             $("#PadhegaT").hide();
+    //             $("#GirlsT").hide();
+    //             $("#SchoolT").hide();
+    //             $("#LivelihoodT").hide();
+    //         }
+    //        else  if (selectedText == "100 Bed Charitable Hospital") {
+    //             $("#SanitoryPadsA").hide();
+    //             $("#BedA").show();
+    //             $("#MedicalCampA").hide();
+    //             $("#PadhegaA").hide();
+    //             $("#GirlsA").hide();
+    //             $("#SchoolA").hide();
+    //             $("#LivelihoodA").hide();
+    //             $("#amount").hide();
+    //             $("#custom").hide();
+    //            ////////text divtag
+    //             $("#SanitoryPadsT").hide();
+    //             $("#BedT").hide();
+    //             $("#MedicalCampT").hide();
+    //             $("#PadhegaT").hide();
+    //             $("#GirlsT").hide();
+    //             $("#SchoolT").hide();
+    //             $("#LivelihoodT").hide();
+    //        }
+    //        else  if (selectedText == "Weekly Medical Camp In Rural Areas") {
+    //            $("#SanitoryPadsA").hide();
+    //            $("#BedA").hide();
+    //            $("#MedicalCampA").show();
+    //            $("#PadhegaA").hide();
+    //            $("#GirlsA").hide();
+    //            $("#SchoolA").hide();
+    //            $("#LivelihoodA").hide();
+    //            $("#amount").hide();
+    //            $("#custom").hide();
+    //            ////////text divtag
+    //            $("#SanitoryPadsT").hide();
+    //            $("#BedT").hide();
+    //            $("#MedicalCampT").hide();
+    //            $("#PadhegaT").hide();
+    //            $("#GirlsT").hide();
+    //            $("#SchoolT").hide();
+    //            $("#LivelihoodT").hide();
+    //        }
+    //        else  if (selectedText == "Charitable Public School") {
+    //             $("#SanitoryPadsA").hide();
+    //             $("#BedA").hide();
+    //             $("#MedicalCampA").hide();
+    //             $("#PadhegaA").hide();
+    //             $("#GirlsA").hide();
+    //             $("#SchoolA").show();
+    //             $("#LivelihoodA").hide();
+    //             $("#amount").hide();
+    //             $("#custom").hide();
+    //            ////////text divtag
+    //             $("#SanitoryPadsT").hide();
+    //             $("#BedT").hide();
+    //             $("#MedicalCampT").hide();
+    //             $("#PadhegaT").hide();
+    //             $("#GirlsT").hide();
+    //             $("#SchoolT").hide();
+    //             $("#LivelihoodT").hide();
+    //         }
+    //         else {
+    //             $("#SanitoryPadsA").hide();
+    //             $("#BedA").hide();
+    //             $("#MedicalCampA").hide();
+    //             $("#PadhegaA").hide();
+    //             $("#GirlsA").hide();
+    //             $("#SchoolA").hide();
+    //             $("#LivelihoodA").hide();
+    //             $("#amount").hide();
+    //             $("#custom").hide();
+    //            ////////text divtag
+    //             $("#SanitoryPadsT").hide();
+    //             $("#BedT").hide();
+    //             $("#MedicalCampT").hide();
+    //             $("#PadhegaT").hide();
+    //             $("#GirlsT").hide();
+    //             $("#SchoolT").hide();
+    //             $("#LivelihoodT").hide();
+    //        }
+       
+    //    });
+    //});
+    $(function () {
+        $("input[type='radio']").change(function () {
+            var supportcause = document.getElementById("supporttype");
+            var selectedText = supportcause.options[supportcause.selectedIndex].text;
+            if (selectedText  == "Ab Har Koi Padhega") 
+            {
+                if (($(this).val() == "1")) {
+                    document.getElementById("PadhegaT").innerHTML="Your donation will help for the education of 1 Child for 3 months";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").show();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "2")) {
+                    document.getElementById("PadhegaT").innerHTML="Your donation will help for the education of 1 Child for 6 months";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").show();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+               
+                }
+                else if (($(this).val() == "3")) {
+                    document.getElementById("PadhegaT").innerHTML="Your donation will help for the education of 1 Child for 1 year";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").show();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+               
+                }
+                else if (($(this).val() == "4")) {
+                    document.getElementById("PadhegaT").innerHTML="Your donation will help for the education of 2 Children for 1 year";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").show();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                
+                }
+            }
+            
+            if (selectedText  == "Ab Baari Hai Hamari") 
+            {
+                if (($(this).val() == "1")) {
+                    document.getElementById("LivelihoodT").innerHTML="Your donation will help for the training of 1 YOUTH";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").show();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "2")) {
+                    document.getElementById("LivelihoodT").innerHTML="Your donation will help for the training of 2 YOUTH";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").show();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "3")) {
+                    document.getElementById("LivelihoodT").innerHTML="Your donation will help for the training of 3 YOUTH";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").show();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "4")) {
+                    document.getElementById("LivelihoodT").innerHTML="Your donation will help for the training of 1 YOUTH";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").show();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+                
+                }
+            }
+           
+            if (selectedText  == "Girl's Education") 
+            {
+                if (($(this).val() == "1")) {
+                    document.getElementById("GirlsT").innerHTML="Your donation will help for the education of 1 Child for 6 months";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").show();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "2")) {
+                    document.getElementById("GirlsT").innerHTML="Your donation will help for the education of 1 Child for 1 year";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").show();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+               
+                }
+                else if (($(this).val() == "3")) {
+                    document.getElementById("GirlsT").innerHTML="Your donation will help for the education of 3 Children for 1 year";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").show();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+               
+                }
+                else if (($(this).val() == "4")) {
+                    document.getElementById("GirlsT").innerHTML="Your donation will help for the education of 6 Children for 1 year";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").show();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                
+                }
+            }
+           
+            if (selectedText  == "Sanitary Pads Distribution For Poor Women") 
+            {
+                if (($(this).val() == "1")) {
+                    document.getElementById("SanitoryPadsT").innerHTML="Your donation will help 10 girls to get a sanitary pads kit for 1 month";
+                    $("#SanitoryPadsT").show();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "2")) {
+                    document.getElementById("SanitoryPadsT").innerHTML="Your donation will help 25 girls to get a sanitary pads kit for 1 month";
+                    $("#SanitoryPadsT").show();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "3")) {
+                    document.getElementById("SanitoryPadsT").innerHTML="Your donation will help 50 girls to get a sanitary pads kit for 1 month";
+                    $("#SanitoryPadsT").show();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "4")) {
+                    document.getElementById("SanitoryPadsT").innerHTML="Your donation will help 100 girls to get a sanitary pads kit for 1 month";
+                    $("#SanitoryPadsT").show();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+            }
+           
+            if (selectedText  == "100 Bed Charitable Hospital") 
+            {
+                if (($(this).val() == "1")) {
+                    document.getElementById("BedT").innerHTML="Your donation will help Patient care / Infrastructure";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").show();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "2")) {
+                    document.getElementById("BedT").innerHTML="Your donation will help Patient care / Infrastructure";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").show();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+               
+                }
+                else if (($(this).val() == "3")) {
+                    document.getElementById("BedT").innerHTML="Your donation will help Patient care / Infrastructure";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").show();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+               
+                }
+                else if (($(this).val() == "4")) {
+                    document.getElementById("BedT").innerHTML="Your donation will help Patient care / Infrastructure";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").show();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                
+                }
+            }
+           
+            if (selectedText  == "Weekly Medical Camp In Rural Areas") 
+            {
+                if (($(this).val() == "1")) {
+                    document.getElementById("MedicalCampT").innerHTML="Your donation will help take healthcare services to doorsteps of vulnerable children and families";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").show();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "2")) {
+                    document.getElementById("MedicalCampT").innerHTML="Your donation will help take healthcare services to doorsteps of vulnerable children and families";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").show();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "3")) {
+                    document.getElementById("MedicalCampT").innerHTML="Your donation will help take healthcare services to doorsteps of vulnerable children and families";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").show();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "4")) {
+                    document.getElementById("MedicalCampT").innerHTML="Your donation will help take healthcare services to doorsteps of vulnerable children and families";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").show();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").hide();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+                }
+            }
+           
+            if (selectedText  == "Charitable Public School") 
+            {
+                if (($(this).val() == "1")) {
+                    document.getElementById("SchoolT").innerHTML="Your donation will help in education / Infrastructure for children";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").show();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "2")) {
+                    document.getElementById("SchoolT").innerHTML="Your donation will help in education / Infrastructure for children";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").show();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "3")) {
+                    document.getElementById("SchoolT").innerHTML="Your donation will help in education / Infrastructure for children";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").show();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+               
+                }
+                else if (($(this).val() == "4")) {
+                    document.getElementById("SchoolT").innerHTML="Your donation will help in education / Infrastructure for children";
+                    $("#SanitoryPadsT").hide();
+                    $("#BedT").hide();
+                    $("#MedicalCampT").hide();
+                    $("#PadhegaT").hide();
+                    $("#GirlsT").hide();
+                    $("#SchoolT").show();
+                    $("#LivelihoodT").hide();
+                    $("#amount").hide();
+                    $("#custom").hide();
+                  
+                
+                }
+            }
+           
+        });
+    });
     $(document).ready(function () {
         $("input[type='radio']").change(function () {
             if ($(this).val() == "0") {
                 $("#amount").show();
                 $("#custom").show();
+                ////////text divtag
+                $("#SanitoryPadsT").hide();
+                $("#BedT").hide();
+                $("#MedicalCampT").hide();
+                $("#PadhegaT").hide();
+                $("#GirlsT").hide();
+                $("#SchoolT").hide();
+                $("#LivelihoodT").hide();
             }
             else {
                 $("#amount").hide();
@@ -176,8 +972,8 @@
                         </div>
                     </div>
                     <div class="col-md-7">
-                        <div class="bg-theme-colored pt-60 p-40">
-                            <h3 class="mt-0 text-white">Make a Donation Now!</h3>
+                        <div class="bg-theme-colored pt-60 p-20">
+                            <h3 class="text-white" style="text-align:center">Make a Donation Now!</h3>
 
                             <!-- ===== START: Paypal Both Onetime/Recurring Form ===== -->
                             <form id="donarForm" action="#" accept-charset="UTF-8" method="dialog">
@@ -185,18 +981,155 @@
                                     <div class="col-sm-12">
                                         <div class="form-group text-white">
                                             <label><strong class="">Support The Cause</strong></label>
-                                            <select name="SupportType" class="form-control">
-                                                <option value="Health">Health</option>
-                                                <option value="Education">Education</option>
-                                                <option value="Livelihood">Livelihood</option>
-                                                <option value="Environment">Environment</option>
+                                            <select name="SupportType" id="supporttype" class="form-control" onchange="ChangeSupportType()" >
+                                                <option value="">Select Cause</option>
+                                                <!-- Support Type 1-->
+                                                @if (ViewBag.cause == "Ab Har Koi Padhega")
+                                                {
+                                                    <option value="Education" selected>Ab Har Koi Padhega</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="Education">Ab Har Koi Padhega</option>
+                                                }
+                                                
+                                                <!-- Support Type 2-->
+                                                @if (ViewBag.cause == "Ab Baari Hai Hamari")
+                                                {
+                                                    <option value="Livelihood" id="Ab Baari Hai Hamari" selected>Ab Baari Hai Hamari</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="Livelihood" id="Ab Baari Hai Hamari">Ab Baari Hai Hamari</option>
+                                                }
+
+                                                <!-- Support Type 3-->
+                                                @if (ViewBag.cause == "Girl's Education")
+                                                {
+                                                    <option value="Education" id="Girl's Education" selected>Girl's Education</option>
+                                                }
+                                                else
+                                                {
+                                                   <option value="Education" id="Girl's Education">Girl's Education</option>
+                                                }
+                                                
+                                                <!-- Support Type 4-->
+                                                @if (ViewBag.cause == "Sanitary Pads Distribution For Poor Women")
+                                                {
+                                                    <option value="Health" id="" selected>Sanitary Pads Distribution For Poor Women</option>
+                                                }
+                                                else
+                                                {
+                                                   <option value="Health" id="">Sanitary Pads Distribution For Poor Women</option>
+                                                }
+
+                                                <!-- Support Type 5-->
+                                                @if (ViewBag.cause == "100 Bed Charitable Hospital")
+                                                {
+                                                    <option value="Health" id="" selected>100 Bed Charitable Hospital</option>
+                                                }
+                                                else
+                                                {
+                                                   <option value="Health" id="">100 Bed Charitable Hospital</option>
+                                                }
+                                                
+                                                <!-- Support Type 6-->
+                                                @if (ViewBag.cause == "Weekly Medical Camp In Rural Areas")
+                                                {
+                                                    <option value="Health" id="" selected>Weekly Medical Camp In Rural Areas</option>
+                                                }
+                                                else
+                                                {
+                                                   <option value="Health" id="">Weekly Medical Camp In Rural Areas</option>
+                                                }
+
+                                                <!-- Support Type 7-->
+                                                @if (ViewBag.cause == "Charitable Public School")
+                                                {
+                                                    <option value="Education" id="" selected>Charitable Public School</option>
+                                                }
+                                                else
+                                                {
+                                                   <option value="Education" id="">Charitable Public School</option>
+                                                }
+                                                
+                                                
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="col-sm-12">
                                         <div class="form-group  text-white">
                                             <label><strong class="">How much do you want to donate?</strong></label>
-                                            <div class="radio">
+                                            <div class="radio" id="SanitoryPadsA" style="display:none;">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="1" onclick="checkButton(this.value)">
+                                                    2000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="2" onclick="checkButton(this.value)">
+                                                    5000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="3" onclick="checkButton(this.value)">
+                                                    10000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="4" onclick="checkButton(this.value)">
+                                                    20000 Rs.
+                                                </label>
+
+                                               <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="0" onclick="checkButton(this.value)">
+                                                    Other Amount
+                                                </label>
+                                            </div>
+                                            <div class="radio" id="BedA" style="display:none;">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="1" onclick="checkButton(this.value)">
+                                                    10000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="2" onclick="checkButton(this.value)">
+                                                    50000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="3" onclick="checkButton(this.value)">
+                                                    500000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="4" onclick="checkButton(this.value)">
+                                                    1000000 Rs.
+                                                </label>
+
+                                               <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="0" onclick="checkButton(this.value)">
+                                                    Other Amount
+                                                </label>
+                                            </div>
+                                            <div class="radio" id="MedicalCampA" style="display:none;">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="1" onclick="checkButton(this.value)">
+                                                    2000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="2" onclick="checkButton(this.value)">
+                                                    3000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="3" onclick="checkButton(this.value)">
+                                                    5000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="4" onclick="checkButton(this.value)">
+                                                    10000 Rs.
+                                                </label>
+
+                                               <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="0" onclick="checkButton(this.value)">
+                                                    Other Amount
+                                                </label>
+                                            </div>
+                                            <div class="radio" id="PadhegaA" style="display:none;">
                                                 <label class="radio-inline">
                                                     <input type="radio" name="amount_option" value="1" onclick="checkButton(this.value)">
                                                     1500 Rs.
@@ -213,47 +1146,140 @@
                                                     <input type="radio" name="amount_option" value="4" onclick="checkButton(this.value)">
                                                     12000 Rs.
                                                 </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="0" onclick="checkButton(this.value)">
+                                                    Other Amount
+                                                </label>
+                                               
+                                            </div>
+                                            <div class="radio" id="GirlsA" style="display:none;">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="1" onclick="checkButton(this.value)">
+                                                    3000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="2" onclick="checkButton(this.value)">
+                                                    6000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="3" onclick="checkButton(this.value)">
+                                                    18000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="4" onclick="checkButton(this.value)">
+                                                    36000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="0" onclick="checkButton(this.value)">
+                                                    Other Amount
+                                                </label>
+                                               
+                                            </div>
+                                            <div class="radio" id="SchoolA" style="display:none;">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="1" onclick="checkButton(this.value)">
+                                                    5000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="2" onclick="checkButton(this.value)">
+                                                    10000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="3" onclick="checkButton(this.value)">
+                                                    50000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="4" onclick="checkButton(this.value)">
+                                                    100000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="0" onclick="checkButton(this.value)">
+                                                    Other Amount
+                                                </label>
+                                               
+                                            </div>
+                                            <div class="radio" id="LivelihoodA" style="display:none;">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="1" onclick="checkButton(this.value)">
+                                                    5000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="2" onclick="checkButton(this.value)">
+                                                    10000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="3" onclick="checkButton(this.value)">
+                                                    15000 Rs.
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="amount_option" value="4" onclick="checkButton(this.value)">
+                                                    20000 Rs.
+                                                </label>
 
                                                 <label class="radio-inline">
                                                     <input type="radio" name="amount_option" value="0" onclick="checkButton(this.value)">
                                                     Other Amount
                                                 </label>
                                             </div>
+                                            
                                             <div id="custom_other_amount">
                                                 <label id="custom" style="display:none;"><strong>Custom Amount:</strong></label>
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" id="amount" name="DonateAmount" style="display:none;" placeholder="Enter Amount">
                                                 </div>
                                             </div>
-                                            @*<label>YOUR DONATION WILL HELP FOR THE EDUCATION OF 1 CHILD FOR 3 MONTHS</label>*@
+                                            
+             
+                                            
+                                            
+                                            <label id="PadhegaT" style="display:none;"></label>
+                                            <label id="LivelihoodT" style="display:none;"></label>
+                                            <label id="SanitoryPadsT" style="display:none;"></label>
+                                            <label id="MedicalCampT" style="display:none;"></label>
+                                            <label id="BedT" style="display:none;"></label>
+                                            <label id="GirlsT" style="display:none;"></label>
+                                             <label id="SchoolT" style="display:none;"></label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
+                                        <label><strong style="color:white">Enter Donor Full Name*</strong></label>
                                         <div class="form-group mb-20 text-white">
 
-                                            <label><strong class="">Enter Name*</strong></label>
-                                            <input name="Name" type="text" class="form-control" id="name" value="Akash Anand Sharma" placeholder="Enter Full Name" required>
+                                            <div style="float: left; width: 25%; background-color: #eee">
+                                                <select class="form-control" name="title" style="font-size:12px;">
+                                                    <option value="Mr.">Mr.</option>
+                                                    <option value="Mrs.">Mrs.</option>
+                                                    <option value="Miss.">Miss.</option>
+                                                    <option value="M/S.">M/S.</option>
+                                                </select>
+                                            </div>
+
+                                            <div style="float: left; width: 75%;">
+                                                <input name="Name" type="text" class="form-control" id="name" value="" placeholder="Enter Full Name" required>
+                                            </div>
+
+
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group mb-20 text-white">
 
                                             <label><strong class="">Enter DOB*</strong></label>
-                                            <input name="DOB" class="form-control" value="01-01-1990" id="datepicker" placeholder="Enter Date Of Birth" required>
+                                            <input name="DOB" class="form-control" value="" id="datepicker" placeholder="Enter Date Of Birth" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-20 text-white">
 
                                             <label><strong class="">Enter Email *</strong></label>
-                                            <input name="Email" id="email" type="text" class="form-control" placeholder="Enter Email" required value="akash@gmail.com">
+                                            <input name="Email" id="email" type="text" class="form-control" style="text-transform:lowercase" placeholder="Enter Email" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-20 text-white">
 
-                                            <label><strong class="">Enter Phone*</strong></label>
-                                            <input id="mobNo" name="Phone" type="text" class="form-control" placeholder="Enter Phone No." required value="8127192924">
+                                            <label><strong class="">Enter Mobile No.*</strong></label>
+                                            <input id="mobNo" name="Phone" type="text" class="form-control" placeholder="Enter Mobile No." required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -262,9 +1288,8 @@
                                             <label><strong class="">Select Country Name*</strong></label>
                                             <select name="Country" class="form-control">
                                                 <option value="India" selected>India</option>
-
-
                                             </select>
+
 
                                         </div>
                                     </div>
@@ -273,48 +1298,45 @@
 
                                             <label><strong class="">Select State Name*</strong></label>
                                             <select id="country-state" name="State" class="form-control">
-                                                <!-- Uttar Pradesh-->
-                                                <!--- India states -->
-
-                                                <option value="">Select state</option>
-                                                <option value="AN">Andaman and Nicobar Islands</option>
-                                                <option value="AP">Andhra Pradesh</option>
-                                                <option value="AR">Arunachal Pradesh</option>
-                                                <option value="AS">Assam</option>
-                                                <option value="BR">Bihar</option>
-                                                <option value="CH">Chandigarh</option>
-                                                <option value="CT">Chhattisgarh</option>
-                                                <option value="DN">Dadra and Nagar Haveli</option>
-                                                <option value="DD">Daman and Diu</option>
-                                                <option value="DL">Delhi</option>
-                                                <option value="GA">Goa</option>
-                                                <option value="GJ">Gujarat</option>
-                                                <option value="HR">Haryana</option>
-                                                <option value="HP">Himachal Pradesh</option>
-                                                <option value="JK">Jammu and Kashmir</option>
-                                                <option value="JH">Jharkhand</option>
-                                                <option value="KA">Karnataka</option>
-                                                <option value="KL">Kerala</option>
-                                                <option value="LA">Ladakh</option>
-                                                <option value="LD">Lakshadweep</option>
-                                                <option value="MP">Madhya Pradesh</option>
-                                                <option value="MH">Maharashtra</option>
-                                                <option value="MN">Manipur</option>
-                                                <option value="ML">Meghalaya</option>
-                                                <option value="MZ">Mizoram</option>
-                                                <option value="NL">Nagaland</option>
-                                                <option value="OR">Odisha</option>
-                                                <option value="PY">Puducherry</option>
-                                                <option value="PB">Punjab</option>
-                                                <option value="RJ">Rajasthan</option>
-                                                <option value="SK">Sikkim</option>
-                                                <option value="TN">Tamil Nadu</option>
-                                                <option value="TG">Telangana</option>
-                                                <option value="TR">Tripura</option>
-                                                <option value="UP" selected>Uttar Pradesh</option>
-                                                <option value="UT">Uttarakhand</option>
-                                                <option value="WB">West Bengal</option>
-                                            </select>
+    <option value="">Select state</option>
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+    <option value="Daman and Diu">Daman and Diu</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Ladakh">Ladakh</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Puducherry">Puducherry</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+</select>
 
 
 
@@ -326,28 +1348,42 @@
                                         <div class="form-group mb-20 text-white">
 
                                             <label><strong class="">Enter City*</strong></label>
-                                            <input name="City" type="text" class="form-control" placeholder="Enter City" required value="kanpur">
+                                            <input name="City" type="text" class="form-control" placeholder="Enter City" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-20 text-white">
 
-                                            <label><strong class="">Enter Address*</strong></label>
-                                            <input name="Address" type="text" class="form-control" placeholder="Enter Address" required value="kanpur">
+                                            <label><strong class="">Enter Complete Address*</strong></label>
+                                            <input name="Address" type="text" class="form-control" placeholder="Enter Complete Address" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-20 text-white">
 
                                             <label><strong class="">Enter Pin Code*</strong></label>
-                                            <input name="Pincode" type="text" class="form-control" placeholder="Enter Pin Code" required value="208001">
+                                            <input name="Pincode" type="text" class="form-control"  placeholder="Enter Pin Code" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-20 text-white">
 
-                                            <label><strong class="">Enter Pan No.*</strong></label>
-                                            <input name="PAN" type="text" class="form-control" placeholder="Enter Pan No." required value="DLNPS78129">
+                                            <label><strong class="">Enter PAN Number</strong></label>
+                                            <input name="PAN" type="text" class="form-control" style="text-transform:uppercase" placeholder="Enter PAN Number" >
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter Aadhar Number</strong></label>
+                                            <input name="aadharno" type="text" class="form-control" placeholder="Enter Aadhar Number" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-20 text-white">
+
+                                            <label><strong class="">Enter Other Identity Number</strong></label>
+                                            <input name="otherno" type="text" class="form-control" placeholder="Enter Other Identity Number">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
@@ -417,7 +1453,7 @@
                         alert("Failed");
                     }
                 }, error: function (errorMsg) {
-                    alert(errorMsg);
+                    alert('Please fill in the required fields');
                 }
             });
         });
@@ -486,7 +1522,7 @@ $.ajax({
       //  alert(document.getElementById("config_data").value);
     },
     error: function(errorMsg) {
-        alert(errorMsg);
+        alert('Please fill in the required fields');
     }
                 });
                 const valueB = 'false';

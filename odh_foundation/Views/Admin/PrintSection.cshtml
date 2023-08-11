@@ -1,0 +1,72 @@
+﻿@using odh_foundation.Models;
+@{
+    UsersContext db = new UsersContext();
+   
+    var logo = string.Empty;
+    var companyname = string.Empty;
+    var incometype = string.Empty;
+  
+    var r = db.CompanyInfos.Single(ci => ci.Id == 1);
+
+    logo = r.CompanyLogo;
+    companyname = r.CompanyName;
+    incometype = r.IncomeType;
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Print Certificate";
+}
+
+
+<div class="page-content">
+
+    <div class="container" style="width: 100%; padding-left: 0px; padding-right: 0px;">
+
+        <div class="page-toolbar" style="width: 100%;">
+
+            <div class="page-toolbar-block">
+                <div class="page-toolbar-title"></div>
+
+
+                <h4><b>Welcome, @r.CompanyName</b></h4>
+            </div>
+            <div style="margin-top: 0px; float: right; margin-right: 10px;">
+            </div>
+
+        </div>
+
+        <div class="widget stacked">
+
+            <div class="widget-header">
+                <i class="icon-print"></i>
+                <h3>Printe Certificate</h3>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content">
+
+                <div class="shortcuts">
+                   
+                    <a href="~/Admin/Print80GReciept" class="shortcut">
+                        <img alt="" src="~/Images/icon/spotcomm.jpg" />
+                        <span class="shortcut-label">Payment Acknowledgment</span>
+                        <br />
+                    </a>
+                         <a href="~/Admin/PrintCertificate" class="shortcut">
+							<img alt="" src="~/Images/icon/Share_Certificate.png" />
+							<span class="shortcut-label">Print 80G Receipt</span>
+                            <br />
+						</a>
+                        
+
+                </div>
+                <!-- /shortcuts -->
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+    </div>
+    <!-- /widget-content -->
+
+</div>
+

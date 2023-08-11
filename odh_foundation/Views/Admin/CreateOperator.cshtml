@@ -1,0 +1,159 @@
+﻿@model odh_foundation.Models.Operator
+@using odh_foundation.Models;
+@{
+    UsersContext db = new UsersContext();
+  
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "CreateOperator";
+}
+
+
+<link href="~/Content/datepicker/jquery.datepick.css" rel="stylesheet">
+<script src="~/Content/datepicker/jquery.plugin.js"></script>
+<script src="~/Content/datepicker/jquery.datepick.js"></script>
+<script>
+    $(function () {
+        $('#popupDatepicker').datepick();
+        $('#inlineDatepicker').datepick({ onSelect: showDate });
+    });
+
+    function showDate(date) {
+        alert('The date chosen is ' + date);
+    }
+</script>
+
+
+
+
+<link rel="stylesheet" href="~/Content/jquery-ui.css" />
+<script type="text/javascript" src="~/Scripts/autosearch.js"></script> 
+
+<div class="page-content">
+
+                <div class="container">
+                    <div class="page-toolbar">
+                        
+                        <div class="page-toolbar-block">
+                            <div class="page-toolbar-title">Create Operator</div>
+                            <div class="page-toolbar-subtitle"></div>
+                        </div>
+                        
+                        <div class="page-toolbar-block pull-right">
+                            
+                        </div>           
+                        
+                    </div>
+  <div class="row" style="width:100%">
+                        <div class="col-md-6" style="width:100%">
+                            
+                            <div class="block" style="width:100%">
+                               
+                                <div class="block-content controls">
+
+                                   
+                                     @using (Html.BeginForm())
+                                     {
+    
+   
+                                     <div class="row-form">
+                                    <div class="col-md-9">
+                                            <div class="input-group">
+       <span class="input-group-addon"><label class="width">Admin Code </label></span>  
+        <input type="text" class="form-control"  name="BranchCode" id="BranchCode" value="@User.Identity.Name" readonly="true" required></div>
+                                         
+                                        </div>
+                                         </div>
+                                    
+
+
+                                     <div class="row-form">
+                                        
+                                        <div class="col-md-9">
+                                           
+                                            <div class="input-group">
+       <span class="input-group-addon"><label class="width">Operator Name</label></span>  
+                                            <input type="text" class="form-control"  name="OperatorName" id="oname" required></div>
+                                  </div>
+                                          </div>
+
+                                     <div class="row-form">
+                                        
+                                        <div class="col-md-9">
+                                          
+                                            <div class="input-group">
+       <span class="input-group-addon"><label class="width">Operator Id </label></span>  
+                                            <input type="text" class="form-control"   name="OperatorId" id="oid" required></div>
+                                    </div>
+                                          </div>
+
+                                    <div class="row-form">
+                                        
+                                        <div class="col-md-9">
+                                           
+                                            <div class="input-group">
+       <span class="input-group-addon"><label class="width">Mobile No </label></span>  
+                                            <input type="tel" class="form-control" pattern="[6789][0-9]{9}" title="Mobile no is not correct format"  maxlength="10" name="OperatorMobile" id="omob" required></div>
+                                  </div>
+                                         </div>
+
+
+                                    <div class="row-form">
+                                        
+                                        <div class="col-md-9">
+                                           
+                                            <div class="input-group">
+       <span class="input-group-addon"><label class="width">Email Id </label></span>  
+                                            <input type="email" class="form-control" title="EmailId not in correct format" name="Operator_Mail" required></div>
+                                    </div>
+                                         </div>
+
+
+                                    <div class="row-form">
+                                        
+                                        <div class="col-md-9">
+                                           
+                                            <div class="input-group">
+       <span class="input-group-addon"><label class="width">Address</label> </span>  
+                                            <textarea class="form-control"   name="OperatorAddress" id="oadd" required></textarea></div>
+                                    </div>
+                                         </div>
+                                    
+                                   
+                                         <div class="row-form">
+                                        
+                                        <div class="col-md-9">
+                                            
+                                            <div class="input-group">
+       <span class="input-group-addon"><label class="width">Date </label></span>  
+                                            <input type="text" class="form-control "name="Cdate" id="popupDatepicker" required></div>
+                                   </div>
+                                         </div>
+                                        <div class="page-toolbar-block pull-right">
+                            <div class="widget-info widget-from">
+         <button  type="submit" class="btn btn-primary pull-right"> Create Operator</button>   
+                                </div>
+                                             </div>
+     <p style="color:maroon;"><b> @ViewBag.msg</b></p>
+                                     }
+                        </div>
+                                   
+                                                                      
+                                                            
+                                    
+                                    
+                                </div>
+                                
+                            </div>
+                            </div>
+                          </div>    
+                     
+                    </div>           
+                        
+                  
+  <script type="text/javascript">
+    $(document).ready(function () {
+        $('#submit').click(function () {
+             @Html.ValidationSummary( true)
+        });
+    });
+ </script>

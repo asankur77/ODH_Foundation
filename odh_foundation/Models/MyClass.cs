@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
-
+using System.Net.Mail;
+using System.Net.Http;
+using System.Net.Security;
+using System.IO;
+using System.Security;
+using System.Text;
 namespace odh_foundation.Models
 {
     public class MyClass
     {
+        private static readonly Encoding encoding = Encoding.UTF8;
         public static void Sendmsg(string receiver, string msg)
         {
             //string url = @"http://sms.technomate.mobi/api/swsend.asp?username=t1welltoss&password=34937074&sender=DASGRP&sendto=" + receiver + "&message=" + msg + "";
@@ -38,11 +44,13 @@ namespace odh_foundation.Models
         }
         public static void Sendmsg1(string receiver, string msg, string templateid)
         {
+            //  MyClass.Sendmsg1(model.Mobile, "Dear " + model.name.ToUpper().Trim() + " ,Welcome To FRIZBY YourID: " + newagentid + " and Password:"+ pass + " You have been assigned to " + mr.rankname.ToUpper().Trim() + " : " + row.RankName.ToUpper().Trim() + ". Visit www.frizby.in For Info.Regards-FRIZBY", "1701162874829168733", "1707162919000328630");
 
             //string url=http://smsw.co.in/API/WebSMS/Http/v1.0a/index.php?username=frizby&password=99@frizbyltd&sender=FRIZBY&to=my+recipient&message=Hello+Test+Message&reqid=1&format={json|text}&pe_id=""&template_id=""&route_id=route+id&callback=Any+Callback+URL&unique=0&sendondate=02-09-2021T10:54:00;
             //string url = @"http://sms.technomate.mobi/api/swsend.asp?username=t1welltoss&password=carewe078066&sender=XPRTGP&sendto=" + receiver + "&message=" + msg + "";
             //string url = @"http://sms.escroll.in/api/mt/SendSMS?user=DIGINEST&password=DIGINEST&sender=FRIZBY&channel=TRANS&DCS=0&flashsms=0&number=" + receiver + "&text=" + msg + "&route=23";
-            string url = "http://sms.xpertgroup.org//api/pushsms.php?user=t5xpertgroup&key=010Eq1cY0XFQezVI7Gl1&sender=ASRDPL&mobile=" + receiver + "&text=" + msg + "&entityid=1701162977693667836&templateid=" + templateid + "";
+            //string url = "http://sms.xpertgroup.org//api/pushsms.php?user=t5xpertgroup&key=010Eq1cY0XFQezVI7Gl1&sender=ASRDPL&mobile=" + receiver + "&text=" + msg + "&entityid=1701162977693667836&templateid=" + templateid + "";
+            string url = "https://www.smsgateway.center/SMSApi/rest/send?userId=odhfnd&password=Odhfnd@12345&sendMethod=simpleMsg&mobile=" + receiver + "&msg=" + msg + "&senderId=ODHFDN&dltEntityId=1501548170000014866&dltTemplateId=" + templateid + "&msgType=text&duplicateCheck=true&format=json";
             //http://sms.xpertgroup.in/api/pushsms.php?user=t5xpertgroup&key=010Eq1cY0XFQezVI7Gl1&sender=PODHLY&mobile=8127192924&text=%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF%20DK%20%E0%A4%86%E0%A4%AA%20%E0%A4%AA%E0%A4%82%E0%A4%9A%E0%A4%B5%E0%A4%9F%E0%A5%80%20%E0%A4%B9%E0%A4%B0%E0%A4%BF%E0%A4%A4%20%E0%A4%85%E0%A4%AD%E0%A4%BF%E0%A4%AF%E0%A4%BE%E0%A4%A8%20%E0%A4%95%E0%A5%80%20%E0%A4%8F%E0%A4%95%20%E0%A4%B5%E0%A5%83%E0%A4%95%E0%A5%8D%E0%A4%B7%20%E0%A4%AF%E0%A5%8B%E0%A4%9C%E0%A4%A8%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%B8%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%AF%20%E0%A4%B8%E0%A4%A6%E0%A4%B8%E0%A5%8D%E0%A4%AF%20%E0%A4%AC%E0%A4%A8%20%E0%A4%97%E0%A4%AF%E0%A5%87%20%E0%A4%B9%E0%A5%88%E0%A4%82%E0%A5%A4%20%E0%A4%86%E0%A4%AA%E0%A4%95%E0%A4%BE%20%E0%A4%AF%E0%A5%82%E0%A4%9C%E0%A4%B0%20%E0%A4%86%E0%A4%88%E0%A4%A1%E0%A5%80%20%E0%A4%A8%E0%A4%82%E0%A4%AC%E0%A4%B0%20-%20ONE145581-344%20%20%E0%A4%B9%E0%A5%88%E0%A5%A4%20%E0%A4%B8%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF%20%E0%A4%B8%E0%A4%A6%E0%A4%B8%E0%A5%8D%E0%A4%AF%E0%A4%A4%E0%A4%BE%20%E0%A4%B9%E0%A5%87%E0%A4%A4%E0%A5%81%20%E0%A4%B8%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF%20%E0%A4%85%E0%A4%A8%E0%A5%81%E0%A4%B0%E0%A5%8B%E0%A4%A7%20%E0%A4%AA%E0%A5%87%E0%A4%9C%20%E0%A4%AA%E0%A4%B0%20%E0%A4%95%E0%A5%8D%E0%A4%B2%E0%A4%BF%E0%A4%95%20%E0%A4%95%E0%A4%B0%E0%A5%87%E0%A4%82.%20%E0%A4%A7%E0%A4%A8%E0%A5%8D%E0%A4%AF%E0%A4%B5%E0%A4%BE%E0%A4%A6%E0%A5%A4-%E0%A4%AA%E0%A4%82%E0%A4%9A%E0%A4%B5%E0%A4%9F%E0%A5%80&entityid=1701163099623774916&templateid=1707163168249619933
             //string url=@"http://sms.xpertgroup.in/api/pushsms.php?user=your profile id&key=your key&sender=Sender id&mobile=9810000000,9891000000,9300000000&text=Text message&entityid=12345##############&templateid=856978############
             try
@@ -65,6 +73,104 @@ namespace odh_foundation.Models
             }
 
         }
+        public static void SendEMail(string to, string subject, string body)
+        {
+            UsersContext db = new UsersContext();
+
+            var comp = db.CompanyInfos.Single(a => a.Id == 1);
+
+
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain, sslpolicyerrors) => true);
+
+            NetworkCredential login = new NetworkCredential(comp.Emailid, comp.SubAdminPassword); // Enter seders User name and password  
+            SmtpClient client = new SmtpClient();
+            client.Host = "smtp.gmail.com";
+            client.Port = 587;
+            client.EnableSsl = true;
+            client.UseDefaultCredentials = false;
+            client.Credentials = login;
+            MailMessage msg = new MailMessage { From = new MailAddress(comp.Emailid, "FireGloble", Encoding.UTF8) };
+            msg.To.Add(new MailAddress(to));
+
+            msg.Subject = subject;
+            msg.Body = body;
+            msg.BodyEncoding = Encoding.UTF8;
+            msg.IsBodyHtml = true;
+            msg.Priority = MailPriority.Normal;
+            client.Send(msg);
+
+        }
+        public static FinancialYearTab GetFinancialYear()
+        {
+            UsersContext db = new UsersContext();
+
+            return db.FinancialYearTabs.FirstOrDefault();
+        }
+        public static String ConvertAmount(double amount)
+        {
+            try
+            {
+                Int64 amount_int = (Int64)amount;
+                Int64 amount_dec = (Int64)Math.Round((amount - (double)(amount_int)) * 100);
+                if (amount_dec == 0)
+                {
+                    return ConvertDigit(amount_int) + " Rupees Only";
+                }
+                else
+                {
+                    return ConvertDigit(amount_int) + " Point " + ConvertDigit(amount_dec) + " Rupees Only";
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO: handle exception  
+            }
+            return "";
+        }
+
+        public static String ConvertDigit(Int64 i)
+        {
+            if (i < 20)
+            {
+                return units[i];
+            }
+            if (i < 100)
+            {
+                return tens[i / 10] + ((i % 10 > 0) ? " " + ConvertDigit(i % 10) : "");
+            }
+            if (i < 1000)
+            {
+                return units[i / 100] + " Hundred"
+                        + ((i % 100 > 0) ? " And " + ConvertDigit(i % 100) : "");
+            }
+            if (i < 100000)
+            {
+                return ConvertDigit(i / 1000) + " Thousand "
+                + ((i % 1000 > 0) ? " " + ConvertDigit(i % 1000) : "");
+            }
+            if (i < 10000000)
+            {
+                return ConvertDigit(i / 100000) + " Lakh "
+                        + ((i % 100000 > 0) ? " " + ConvertDigit(i % 100000) : "");
+            }
+            if (i < 1000000000)
+            {
+                return ConvertDigit(i / 10000000) + " Crore "
+                        + ((i % 10000000 > 0) ? " " + ConvertDigit(i % 10000000) : "");
+            }
+            return ConvertDigit(i / 1000000000) + " Arab "
+                    + ((i % 1000000000 > 0) ? " " + ConvertDigit(i % 1000000000) : "");
+        }
+        private static String[] units = { "Zero", "One", "Two", "Three",
+    "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven",
+    "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+    "Seventeen", "Eighteen", "Nineteen" };
+        private static String[] tens = { "", "", "Twenty", "Thirty", "Forty",
+    "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+   
     }
 
     public class MonthName

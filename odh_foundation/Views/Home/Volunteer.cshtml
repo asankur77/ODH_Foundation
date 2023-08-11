@@ -3,52 +3,65 @@
 @{
     ViewBag.Title = "Volunteer";
 }
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+            dateFormat: 'dd-mm-yyyy',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '-100y:c+nn',
+            maxDate: '-1d'
+        });
+    });
+
+</script>
 <script type="text/javascript">
     $(function () {
-        $("#category").change(function () {
+        $("#Profession").change(function () {
             if ($(this).val() == "Other") {
                 
-                $("#category1").show();
+                $("#Profession1").show();
                    
                
             } else {
-                $("#category1").hide();
+                $("#Profession1").hide();
             }
         });
     });
     $(function () {
-        $("#exp").change(function () {
+        $("#VolunteerDuration").change(function () {
             if ($(this).val() == "Other") {
 
-                $("#exp1").show();
+                $("#VolunteerDuration1").show();
 
 
             } else {
-                $("#exp1").hide();
+                $("#VolunteerDuration1").hide();
             }
         });
     });
     $(function () {
-        $("#vlearn").change(function () {
+        $("#VolunteerPurpose").change(function () {
             if ($(this).val() == "Other") {
 
-                $("#vlearn1").show();
+                $("#VolunteerPurpose1").show();
 
 
             } else {
-                $("#vlearn1").hide();
+                $("#VolunteerPurpose1").hide();
             }
         });
 
         $(function () {
-            $("#activity").change(function () {
+            $("#VolunteerAbility").change(function () {
                 if ($(this).val() == "Other") {
 
-                    $("#activity1").show();
+                    $("#VolunteerAbility1").show();
 
 
                 } else {
-                    $("#activity1").hide();
+                    $("#VolunteerAbility1").hide();
                 }
             });
         });
@@ -96,6 +109,23 @@
                                         </div>
                                     </div>
                                 </div>
+                  <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" style="color:black">Father / Spouse Name<span class="text-danger"> *</span></label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="FName" placeholder="Enter Name">
+                                        </div>
+                                    </div>
+                                </div>
+                 
+                  <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label" style="color:black"> Date of Birth<span class="text-danger"> *</span></label>
+                                        <div class="form-group">
+                                             <input type="text" class="form-control" name="dob" id="datepicker" placeholder="Enter Date Of Birth" required>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label"style="color:black">Email id used for communication<span class="text-danger">*</span></label>
@@ -124,7 +154,7 @@
                                     <div class="form-group">
                                         <label class="control-label"style="color:black">Address<span class="text-danger">*</span></label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Enter Your Address" name="Address">
+                                            <input type="text" class="form-control" placeholder="Enter Your Address" name="Address" required>
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +162,7 @@
                                     <div class="form-group">
                                         <label class="control-label"style="color:black">I am a<span class="text-danger">*</span></label>
                                         <div class="form-group">
-                                            <select id="category" name="Profession" class="form-control">
+                                            <select id="Profession" name="Profession" class="form-control" required>
                                                 <option>----- Select------</option>
                                                 <option value="Student">Student</option>
                                                 <option value="Businessman">Businessman</option>
@@ -141,7 +171,7 @@
                                                 <option value="Retired Individual">Retired Individual</option>
                                                 <option value="Other">Other</option>
                                             </select>
-                                             <input type="text"  id="category1" name="category1"     class="form-control" style="display:none" placeholder="Enter Your Value">
+                                             <input type="text"  id="Profession1" name="Profession1"     class="form-control" style="display:none" placeholder="Enter Your Value">
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +179,7 @@
                                     <div class="form-group">
                                         <label class="control-label"style="color:black">I can volunteer for<span class="text-danger">*</span></label>
                                         <div class="form-group">
-                                            <select name="VolunteerDuration" id="exp" class="form-control">
+                                            <select name="VolunteerDuration" id="VolunteerDuration" class="form-control" required>
                                                 <option>----- Select------</option>
                                                 <option value="Less than a Month">Less than a Month</option>
                                                 <option value="1-3 Months">1-3 Months</option>
@@ -160,7 +190,7 @@
                                                 <option value="Depends on how engaging the activity is">Depends on how engaging the activity is</option>
                                                 <option value="Other">Other</option>
                                             </select>
-                                            <input type="text"  id="exp1" name="exp1"     class="form-control" style="display:none" placeholder="Enter Your Value">
+                                            <input type="text"  id="VolunteerDuration1" name="VolunteerDuration1"     class="form-control" style="display:none" placeholder="Enter Your Value">
 
                                         </div>
                                     </div>
@@ -169,7 +199,7 @@
                                     <div class="form-group">
                                         <label class="control-label"style="color:black">I want to volunteer because<span class="text-danger">*</span></label>
                                         <div class="form-group">
-                                            <select name="VolunteerPurpose" id="vlearn" class="form-control">
+                                            <select name="VolunteerPurpose" id="VolunteerPurpose" class="form-control" required>
                                                 <option>----- Select------</option>
                                                 <option>I want to learn something about NGOs</option>
                                                 <option>I have skills that I can share</option>
@@ -179,7 +209,7 @@
                                                 <option>I have time and I can spend this usefully</option>
                                                 <option>Other</option>
                                             </select>
-                                       <input type="text"  id="vlearn1" name="vlearn1"     class="form-control" style="display:none" placeholder="Enter Your Value">
+                                       <input type="text"  id="VolunteerPurpose1" name="VolunteerPurpose1"     class="form-control" style="display:none" placeholder="Enter Your Value">
 
                                         </div>
                                     </div>
@@ -188,19 +218,42 @@
                                     <div class="form-group">
                                         <label class="control-label"style="color:black">I would like an activity that<span class="text-danger">*</span></label>
                                         <div class="form-group">
-                                            <select name="VolunteerAbility" id="activity" class="form-control">
+                                            <select name="VolunteerAbility" id="VolunteerAbility" class="form-control" required>
                                                 <option>----- Select------</option>
                                                 <option value="Allows me to interact with many people">Allows me to interact with many people</option>
                                                 <option value="I can do by myself">I can do by myself</option>
                                                 <option value="I am not sure">I am not sure</option>
                                                 <option value="Other">Other</option>
                                             </select>
-                                       <input type="text"  id="activity1" name="activity1"     class="form-control" style="display:none" placeholder="Enter Your Value">
+                                       <input type="text"  id="VolunteerAbility1" name="VolunteerAbility1"     class="form-control" style="display:none" placeholder="Enter Your Value">
 
                                         </div>
                                     </div>
                                 </div>
-
+                  <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">Profile Pic<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                           <input class="form-control" name="ProfilePic" type="file" onchange="readURL1(this)" required />
+                                        </div>
+                                    </div>
+                                </div>
+                  <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">Aadhar Card(Front Pic)<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" name="AadharFront" type="file" onchange="readURL2(this)" required />
+                                        </div>
+                                    </div>
+                                </div>
+                   <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"style="color:black">Aadhar Card(Back Pic)<span class="text-danger">*</span></label>
+                                        <div class="form-group">
+                                           <input class="form-control" name="AadharBack" type="file" onchange="readURL3(this)" required />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                 <div class="form-group">
                   <input name="form_botcheck" class="form-control" type="hidden" value="" />

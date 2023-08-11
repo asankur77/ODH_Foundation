@@ -118,7 +118,7 @@ Rural Development, Women Empowerment, Disaster Management, Art & Culture,Clean I
                                 <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
                                     <li class="mt-sm-10 mb-sm-10">
                                         <!-- Modal: Appointment Starts -->
-                                        <a class="btn btn-default btn-flat btn-xlg bg-green p-5 font-11 pl-10 pr-10 " href="../Home/Donation">Donate Now</a>
+                                        <a class="btn btn-default btn-flat btn-xlg bg-green p-5 font-11 pl-10 pr-10 " href="../Home/Login">Login</a>
                                     </li>
                                     
                                 </ul>
@@ -175,17 +175,15 @@ Rural Development, Women Empowerment, Disaster Management, Art & Culture,Clean I
 
                                  <li id="menu-item"><a title="Services" class="menu-item-link" href="#"><span>Campaigns</span> </a>
                                     <ul class="dropdown">
-                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item"><a title="Services Gird" class="menu-item-link" href="#">Ab Har Koi Padega</a>	</li>
-                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-services menu-item"><a title="Services Details" class="menu-item-link" href="#">Ab Baari Hai Hamari</a>	</li>
-                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-services menu-item"><a title="Services Details" class="menu-item-link" href="#">Clean India, Green India</a>	</li>
+                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item"><a title="Services Gird" class="menu-item-link" href="../Home/AbHarKoiPadega">Ab Har Koi Padhega</a>	</li>
+                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-services menu-item"><a title="Services Details" class="menu-item-link" href="../Home/AbBaariHaiHamari">Ab Baari Hai Hamari</a>	</li>
 
                                         <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item"><a title="Services Gird" class="menu-item-link" href="../Home/GirlEducation">Girl’s Education</a>	</li>
 
                                         <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item"><a title="Services Gird" class="menu-item-link" href="../Home/SanitaryPad"> Sanitary Pads Distribution For Poor Women</a>	</li>
-                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-services menu-item"><a title="Services Details" class="menu-item-link" href="#">100 Bed Charitable Hospital</a>	</li>
-                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item"><a title="Services Gird" class="menu-item-link" href="#">Vocational Training Centre</a>	</li>
-                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-services menu-item"><a title="Services Details" class="menu-item-link" href="#">Weekly Medical Camp In Rural Areas</a>	</li>
-                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item"><a title="Services Gird" class="menu-item-link" href="#">Charitable Public School</a>	</li>
+                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-services menu-item"><a title="Services Details" class="menu-item-link" href="../Home/CharitableHospital">100 Bed Charitable Hospital</a>	</li>
+                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-services menu-item"><a title="Services Details" class="menu-item-link" href="../Home/MedicalCamp">Weekly Medical Camp In Rural Areas</a>	</li>
+                                        <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item"><a title="Services Gird" class="menu-item-link" href="../Home/CharitableSchool">Charitable Public School</a>	</li>
                               
                       
 
@@ -208,6 +206,7 @@ Rural Development, Women Empowerment, Disaster Management, Art & Culture,Clean I
                                
                                 <li><a href="../Home/Contact">Contact Us</a></li>
                                  <li><a href="../Home/Donation">Donate Us</a></li>
+                                
                             </ul>
                         </nav>
                     </div>
@@ -309,17 +308,19 @@ Rural Development, Women Empowerment, Disaster Management, Art & Culture,Clean I
                             </ul>
                             <p class="font-16 text-white mb-5 mt-15">Sign Up For Latest Updates</p>
                              <p class="font-16 mb-5 mt-15" style="color:#FFFFFF">To keep yourself updated on latest news and programs at ODH Foundation, drop in your E-mail ID</p>
-                            <form id="footer-mailchimp-subscription-form" class="newsletter-form mt-10">
+                          @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+              {
+                              <form  class="newsletter-form mt-10">
                                 <label class="display-block" for="mce-EMAIL"></label>
                                 <div class="input-group">
-                                    <input type="email" value="" name="EMAIL" placeholder="Your Email" class="form-control" data-height="37px" id="mce-EMAIL">
+                                    <input type="email" value="" name="emailid" placeholder="Your Email" class="form-control" style="text-transform:lowercase" data-height="37px" id="mce-EMAIL">
                                     <span class="input-group-btn">
                                         <button type="submit" class="btn btn-colored btn-theme-colored m-0">Subscribe<i class="fa fa-paper-plane-o text-white"></i></button>
                                     </span>
                                 </div>
-                            </form>
+                                          </form>
 
-                            <!-- Mailchimp Subscription Form Validation-->
+                          }     <!-- Mailchimp Subscription Form Validation-->
                             <script type="text/javascript">
                                 $('#footer-mailchimp-subscription-form').ajaxChimp({
                                     callback: mailChimpCallBack,

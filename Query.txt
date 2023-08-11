@@ -1,0 +1,8 @@
+select * from [dbo].[MessageTemplateTab] 
+insert into MessageTemplateTab Values('1207168691702531850','1501548170000014866','ThankYou1','Dear {#var#}, Thank you for your donation. Your generosity means everything to us and to the community we serve. Regards, ODH Foundation','Transactional','English','2023-07-20 00:00:00.000',1)
+insert into MessageTemplateTab Values('1207168691748829744','1501548170000014866','ThankYou1','Thank you, {#var#}, for your generous Rs. {#var#} donation to our annual fund drive! Your support helps us to continue our work in the community. Regards, ODH Foundation','Transactional','English','2023-07-20 00:00:00.000',1)
+
+insert into MessageTemplateTab Values('1207168018055945865','1501548170000014866','ThankYou1','As per new tax rules, please update your details to generate the Tax Exemption - Form 10BE for {#var#} at {#var#}{#var#} - ODH Foundation','Transactional','English','2023-07-20 00:00:00.000',1)
+
+
+

@@ -1,0 +1,156 @@
+﻿@using odh_foundation.Models;
+@{
+    UsersContext db = new UsersContext();
+    var dt = DateTime.Now;
+    var r = db.FinancialYearTabs.Single(ci => ci.Id == 1);
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Financial Year Update";
+}
+
+<style type="text/css">
+    .block-content {
+    width:97% !important;
+    }
+    .block {
+        width:91%;
+    }
+</style>
+<div class="page-content">
+
+    <div class="container">
+
+
+
+        <div class="page-toolbar" style="width:97%;">
+
+            <div class="page-toolbar-block">
+                <div class="page-toolbar-title">Edit Financial Year </div>
+                <div class="page-toolbar-subtitle"></div>
+            </div>
+
+            <div class="page-toolbar-block pull-right">
+            </div>
+
+        </div>
+        <div class="row" style="width:97%;">
+            <div class="span12">
+
+                <div class="block">
+
+                    <div class="block-content controls">
+                        <form method="post">
+                            <div class="row-form">
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Current Financial Year</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="FinancialYearD" value="@r.FinancialYear" readonly="true">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Enter New Value</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="FinancialYear" id="FinancialYear" required>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row-form">
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Current Donor Id</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="DonarIdFormatD" value="@r.DonarIdFormat" readonly="true">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Enter Donor Id</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="DonarIdFormat" id="DonarIdFormat" required>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row-form">
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Current Volunteer Id</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="VolunteerIdFormatD" value="@r.VolunteerIdFormat" readonly="true">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Enter Volunteer Id</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="VolunteerIdFormat" id="VolunteerIdFormat" required>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row-form">
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Current Transaction Id</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="TxnidFormatD" value="@r.TxnidFormat" readonly="true">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row-form">
+
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <label class="width">Enter Transaction Id</label>
+                                        </span>
+                                        <input type="text" class="form-control" name="TxnidFormat" id="TxnidFormat" required>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="page-toolbar-block pull-right">
+                                <div class="widget-info widget-from">
+
+                                    <input type="submit" value="Update" name="command" class="btn btn-success pull-right" />
+
+                                </div>
+                            </div>
+                            <h2 class="pull-right text-success" id="message">@ViewBag.message</h2>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+</div>
+
+    </div>

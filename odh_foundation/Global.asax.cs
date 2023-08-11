@@ -6,6 +6,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using odh_foundation.Models;
+
+using System.Data.Entity;
 
 namespace odh_foundation
 {
@@ -17,7 +20,7 @@ namespace odh_foundation
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            Database.SetInitializer<UsersContext>(null);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

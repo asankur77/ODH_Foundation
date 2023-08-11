@@ -12,16 +12,144 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web;
+using CrystalDecisions.CrystalReports.Engine;
+using System.Data.Entity;
+using System.Globalization;
+
 
 namespace odh_foundation.Controllers
 {
     public class HomeController : Controller
     {
 
+       
+          
+
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            if (image == null)
+            {
+
+            }
+            else
+            {
+                BinaryReader reader = new BinaryReader(image.InputStream);
+                imageBytes = reader.ReadBytes((int)image.ContentLength);
+                return imageBytes;
+            }
+            return imageBytes;
+        }
+        string gid()
+        {
+
+            long i = 1;
+            foreach (byte b in Guid.NewGuid().ToByteArray())
+            {
+
+                i *= ((int)b + 1);
+            }
+
+
+            if (i < 0)
+            {
+                i = -i;
+            }
+            string s = i.ToString();
+            return s.Substring(0, 10);
+
+
+        }
+
+        private static String[] units = { "Zero", "One", "Two", "Three",
+    "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven",
+    "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+    "Seventeen", "Eighteen", "Nineteen" };
+        private static String[] tens = { "", "", "Twenty", "Thirty", "Forty",
+    "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+        public static String ConvertAmount(double amount)
+        {
+            try
+            {
+                Int64 amount_int = (Int64)amount;
+                Int64 amount_dec = (Int64)Math.Round((amount - (double)(amount_int)) * 100);
+                if (amount_dec == 0)
+                {
+                    return ConvertDigit(amount_int) + " Rupees Only";
+                }
+                else
+                {
+                    return ConvertDigit(amount_int) + " Point " + ConvertDigit(amount_dec) + " Rupees Only";
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO: handle exception  
+            }
+            return "";
+        }
+
+        public static String ConvertDigit(Int64 i)
+        {
+            if (i < 20)
+            {
+                return units[i];
+            }
+            if (i < 100)
+            {
+                return tens[i / 10] + ((i % 10 > 0) ? " " + ConvertDigit(i % 10) : "");
+            }
+            if (i < 1000)
+            {
+                return units[i / 100] + " Hundred"
+                        + ((i % 100 > 0) ? " And " + ConvertDigit(i % 100) : "");
+            }
+            if (i < 100000)
+            {
+                return ConvertDigit(i / 1000) + " Thousand "
+                + ((i % 1000 > 0) ? " " + ConvertDigit(i % 1000) : "");
+            }
+            if (i < 10000000)
+            {
+                return ConvertDigit(i / 100000) + " Lakh "
+                        + ((i % 100000 > 0) ? " " + ConvertDigit(i % 100000) : "");
+            }
+            if (i < 1000000000)
+            {
+                return ConvertDigit(i / 10000000) + " Crore "
+                        + ((i % 10000000 > 0) ? " " + ConvertDigit(i % 10000000) : "");
+            }
+            return ConvertDigit(i / 1000000000) + " Arab "
+                    + ((i % 1000000000 > 0) ? " " + ConvertDigit(i % 1000000000) : "");
+        }
+
+
+
+
+
         UsersContext db = new UsersContext();
+        [HttpGet]
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(Subscriber ob)
+        {
+            var cr = db.CompanyInfos.Single(ci => ci.Id == 1);
+            if (ModelState.IsValid)
+            {
+                
+                ob.cdate = DateTime.Now;
+                ob.status = 1;
+                db.Subscriber.Add(ob);
+                db.SaveChanges();
+
+                Response.Write("<script>alert('Thank you for subscribe us, we will contact you soon.')</script>");
+            }
 
             return View();
         }
@@ -63,6 +191,24 @@ namespace odh_foundation.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult Contact(Contact ob)
+        {
+            var cr = db.CompanyInfos.Single(ci => ci.Id == 1);
+            if (ModelState.IsValid)
+            {
+                ob.cdate = DateTime.Now;
+                ob.status = 1;
+                db.Contacts.Add(ob);
+                db.SaveChanges();
+
+                MyClass.Sendmsg1(ob.mobile, "Dear " + ob.name.ToUpper() + ", Thank you for your message. We will get in touch with you as soon as possible. Regards- ODH Foundation", "1207168993362546499");
+
+                Response.Write("<script>alert('Thank you for contacting us, we will contact you soon.')</script>");
+            }
+
+            return View();
+        }
         public ActionResult PrivacyPolicy()
         {
             ViewBag.Message = "Your contact page.";
@@ -101,26 +247,70 @@ namespace odh_foundation.Controllers
         }
 
         [HttpPost]
-        public ActionResult Volunteer(Volunteer request)
+        public ActionResult Volunteer(Volunteer request, HttpPostedFileBase AadharFront, HttpPostedFileBase AadharBack, HttpPostedFileBase ProfilePic, string Profession1, string VolunteerDuration1, string VolunteerPurpose1, string VolunteerAbility1)
         {
+
+            var r = new Volunteer();
+            if (ProfilePic != null)
+            {
+                string imgname = gid();
+                r.ProfilePic = "~/Photo/" + imgname + ".jpg";
+                ProfilePic.SaveAs(HttpContext.Server.MapPath("~/Photo/" + imgname + ".jpg"));
+                var imgr = ConvertToBytes(ProfilePic);
+                r.Photonew = imgr;
+            }
+            else
+            {
+                r.ProfilePic = "~/Photo/default.jpg";
+                r.Photonew = new byte[] { };
+
+            }
+
+
+            if (AadharFront != null)
+            {
+                string imgname = gid();
+                r.AadharFront = "~/Aadhar/" + imgname + ".jpg";
+                AadharFront.SaveAs(HttpContext.Server.MapPath("~/Aadhar/" + imgname + ".jpg"));
+
+            }
+
+            if (AadharBack != null)
+            {
+                string imgname = gid();
+                r.AadharBack = "~/Aadhar/" + imgname + ".jpg";
+                AadharBack.SaveAs(HttpContext.Server.MapPath("~/Aadhar/" + imgname + ".jpg"));
+
+            }
             var volunteer = new Volunteer()
             {
                 Name = request.Name,
-                Email = request.Email,
+                FName = request.FName,
+                Email = request.Email.ToLower(),
                 Mobile = request.Mobile,
                 WhatsupNumber = request.WhatsupNumber,
+                DOB = Convert.ToDateTime(request.DOB),
                 Address = request.Address,
-                Profession = request.Profession,
-                VolunteerDuration = request.VolunteerDuration,
-                VolunteerPurpose = request.VolunteerPurpose,
-                VolunteerAbility = request.VolunteerAbility,
+                Profession = (request.Profession == "Other") ? Profession1 : request.Profession,
+                VolunteerDuration = (request.VolunteerDuration == "Other") ? VolunteerDuration1 : request.VolunteerDuration,
+                VolunteerPurpose = (request.VolunteerPurpose == "Other") ? VolunteerPurpose1 : request.VolunteerPurpose,
+                VolunteerAbility = (request.VolunteerAbility == "Other") ? VolunteerAbility1 : request.VolunteerAbility,
                 RegistrationDate = DateTime.Now,
                 Status = 1,
-                VolunteerId = GenerateRandomVolunteerId(5)
+                VolunteerId = GenerateRandomVolunteerId(5),
+                AadharBack = r.AadharBack,
+                AadharFront=r.AadharFront,
+                ProfilePic=r.ProfilePic,
+                Photonew=r.Photonew
+               
+
             };
 
             db.Volunteers.Add(volunteer);
             db.SaveChanges();
+            //Dear {#var#}, Thanks for subscribing to the ODH Foundation newsletter. we would like to personally thank you for choosing to receive updates from us. It means a lot to have donors like you on board. Regards- ODH Foundation
+            //                                Hi {#var#}, Thank you from the bottom of heart for signing up as a volunteer at ODH Foundation. We are very grateful for your help! For more details contact us on {#var#}. Regards - ODH Foundation
+            MyClass.Sendmsg1(request.Mobile, "Hi " + request.Name.ToUpper() + ", Thank you from the bottom of heart for signing up as a volunteer at ODH Foundation. We are very grateful for your help! For more details contact us on +91-9795505106 , 0512-2220000. Regards - ODH Foundation", "1207168992830508126");
 
             Response.Write("<script>alert('Registered successfully!')</script>");
             return View();
@@ -143,10 +333,15 @@ namespace odh_foundation.Controllers
 
             return View();
         }
-        public ActionResult Donation()
+        public ActionResult Donation(string cause)
         {
             try
             {
+
+                if(!String.IsNullOrWhiteSpace(cause))
+                {
+                    ViewBag.cause = cause;
+                }
                 //ViewBag.startingPath = HttpContext.CurrentHandler.Request.Url.AbsoluteUri;
                 //ViewBag.vbReturnUrl = Request.Url.AbsoluteUri.ToString() + "Response/responseHandler";
                 ViewBag.vbReturnUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/Home/Successfull";
@@ -298,6 +493,36 @@ namespace odh_foundation.Controllers
 
             return View();
         }
+        public ActionResult AbHarKoiPadega()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+        public ActionResult CharitableSchool()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+        public ActionResult MedicalCamp()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+        public ActionResult CharitableHospital()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+        public ActionResult AbBaariHaiHamari()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
         [HttpGet]
         public ActionResult Login()
         {
@@ -316,7 +541,7 @@ namespace odh_foundation.Controllers
                     if (str.type == "Admin")
                     {
                         FormsAuthentication.SetAuthCookie(str.UserName, true);
-                        return RedirectToAction("Index", "Admin");
+                        return RedirectToAction("Create", "Admin");
                     }
                 }
                 else
@@ -326,7 +551,7 @@ namespace odh_foundation.Controllers
             }
 
             return View();
-        }
+        } 
 
         // Payment Gateway Utility
 
@@ -362,7 +587,7 @@ namespace odh_foundation.Controllers
 
         public string GenerateRandomTransactionString(int size)
         {
-            var newid = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["TxnidFormat"]);
+            var newid = Convert.ToString(MyClass.GetFinancialYear().TxnidFormat);
             var temp = Guid.NewGuid().ToString().Replace("-", string.Empty);
             var barcode = newid + Convert.ToString(Regex.Replace(temp, "[a-zA-Z]", string.Empty).Substring(0, size));
 
@@ -379,7 +604,7 @@ namespace odh_foundation.Controllers
         public string GenerateRandomDonarId(int size)
         {
 
-            var newid = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["DonarIdFormat"]);
+            var newid = Convert.ToString(MyClass.GetFinancialYear().DonarIdFormat);
             var temp = Guid.NewGuid().ToString().Replace("-", string.Empty);
             var barcode = newid + Convert.ToString(Regex.Replace(temp, "[a-zA-Z]", string.Empty).Substring(0, size));
 
@@ -395,7 +620,7 @@ namespace odh_foundation.Controllers
 
         public string GenerateRandomVolunteerId(int size)
         {
-            var newid = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["VolunteerIdFormat"]);
+            var newid = Convert.ToString(MyClass.GetFinancialYear().VolunteerIdFormat);
             var temp = Guid.NewGuid().ToString().Replace("-", string.Empty);
             var barcode = newid + Convert.ToString(Regex.Replace(temp, "[a-zA-Z]", string.Empty).Substring(0, size));
 
@@ -424,6 +649,7 @@ namespace odh_foundation.Controllers
         {
             try
             {
+
                 foreach (var key in formCollection.AllKeys)
                 {
                     var value = formCollection[key];
@@ -540,11 +766,26 @@ namespace odh_foundation.Controllers
                 db.WordLinePaymentResponses.Add(wpr);
                 db.SaveChanges();
 
+                // Updating status in donar table
+                var donardata = db.Donars.Single(b => b.PaymentTransactionId == wpr.ClntTxnRef);
+                if (ViewBag.online_transaction_msg[1] == "success" || ViewBag.online_transaction_msg[1] == "SUCCESS")
+                {
+                    if (db.Donars.Any(a => a.PaymentTransactionId == wpr.ClntTxnRef))
+                    {
+                        var donar = db.Donars.Single(a => a.PaymentTransactionId == wpr.ClntTxnRef);
+                        donar.Status = 1;
+                        db.Entry(donar).State = EntityState.Modified;
+                        db.SaveChanges();
+                        //Thank you, {#var#}, for your contribution. Your kindness will make a significant impact on our mission. You may visit www.odhfoundation.org to view your receipt, and we’ve also sent a copy to your email {#var#} so you can claim it as a tax deduction. Regards, ODH Foundation.
+                        MyClass.Sendmsg1(donardata.Phone, "Thank you, " + donardata.Name.ToUpper() + ", for your contribution. Your kindness will make a significant impact on our mission. You may visit www.odhfoundation.org to view your receipt, and we’ve also sent a copy to your email " + donardata.Email + " so you can claim it as a tax deduction. Regards, ODH Foundation.", "1207168975797980000");
+
+                    }
+                }
             }
             catch (Exception ex)
             {
 
-                //throw;
+                Response.Write("<script>alert('Thankyou for your contribution, Please click Ok to continue.')</script>");
             }
 
             return View();
@@ -552,19 +793,25 @@ namespace odh_foundation.Controllers
 
         public JsonResult DonarCreation(FormCollection fc)
         {
+            var cr = db.FinancialYearTabs.Single(ci => ci.Id == 1);
+            string amountinwords ="( "+ ConvertAmount(Convert.ToDouble(fc["DonateAmount"]))+ " )";
             int status = 0;
             try
             {
                 var donar = new Donar();
-                donar.Address = Convert.ToString(fc["Address"]);
+                donar.Address = Convert.ToString(fc["Address"]) + "," + Convert.ToString(fc["City"]) + "," + Convert.ToString(fc["State"]) + "," + Convert.ToString(fc["Country"]) + "-" + Convert.ToString(fc["Pincode"]);
                 donar.City = Convert.ToString(fc["City"]);
                 donar.Country = Convert.ToString(fc["Country"]);
                 donar.DOB = Convert.ToDateTime(fc["DOB"]);
                 donar.DonateAmount = !String.IsNullOrEmpty(Convert.ToString(fc["DonateAmount"])) ? Convert.ToInt32(fc["DonateAmount"]) : 0;
                 donar.DonationDate = DateTime.Now;
-                donar.Email = Convert.ToString(fc["Email"]);
+                donar.Email = Convert.ToString(fc["Email"]).ToLower();
                 donar.Name = Convert.ToString(fc["Name"]);
-                donar.PAN = Convert.ToString(fc["PAN"]);
+                donar.PAN = Convert.ToString(fc["PAN"]).ToUpper();
+                donar.aadharno = Convert.ToString(fc["aadharno"]);
+                donar.otherno = Convert.ToString(fc["otherno"]);
+                donar.title = Convert.ToString(fc["title"]);
+                donar.amountinwords = amountinwords;
                 donar.Phone = Convert.ToString(fc["Phone"]);
                 donar.Pincode = Convert.ToString(fc["Pincode"]);
                 donar.State = Convert.ToString(fc["State"]);
@@ -572,20 +819,93 @@ namespace odh_foundation.Controllers
                 donar.Status = 0;
                 donar.PaymentTransactionId = Convert.ToString(fc["txn_id"]);
                 donar.DonarId = Convert.ToString(fc["custID"]);
+                donar.financialyear = cr.FinancialYear;
+                donar.PaymentState = "Online";
+                donar.PaymentMode = "Online";
 
                 db.Donars.Add(donar);
                 db.SaveChanges();
 
                 status = 1;
+                //MyClass.Sendmsg1(model.OperatorMobile, "Dear " + model.OperatorName.ToUpper() + ",  your UserId is:" + model.OperatorId.ToUpper() + " and Password:" + pass + " Visit www.asrdpl.com", "1707163049957028563");
+
+
             }
             catch (Exception ex)
             {
                 status = 0;
+                Response.Write("<script>alert('Please fill in the required fields')</script>");
             }
 
             return Json(status, JsonRequestBehavior.AllowGet);
         }
 
+
+        public ActionResult PrintInvoiceCrystal(string txnid)
+        {
+            List<Donar> donarlist = new List<Donar>();
+            donarlist = (from o in db.Donars where o.PaymentTransactionId == txnid  select o).ToList();
+            ReportDocument rd = new ReportDocument();
+            
+            rd.Load(Path.Combine(Server.MapPath("~/CReport"), "incoice.rpt"));
+            rd.SetDataSource(donarlist);
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+
+            try
+            {
+                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                return new FileStreamResult(stream, "application/pdf");
+            }
+
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "')</script>");
+            }
+            finally
+            {
+                rd.Close();
+                rd.Dispose();
+            }
+            return View();
+        }
+        public ActionResult PrintCertificateCrystal(string txnid)
+        {
+            List<Donar> donarlist = new List<Donar>();
+            donarlist = (from o in db.Donars where o.PaymentTransactionId == txnid select o).ToList();
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/CReport"), "Income Certificate.rpt"));
+            rd.SetDataSource(donarlist);
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+
+            try
+            {
+                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                return new FileStreamResult(stream, "application/pdf");
+            }
+
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "')</script>");
+            }
+            finally
+            {
+                rd.Close();
+                rd.Dispose();
+            }
+            return View();
+        }
         public ActionResult PrintInvoice(string txnid)
         {
             return Reports.PrintInvoice(txnid);

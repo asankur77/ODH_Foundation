@@ -1,7 +1,16 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
- 
+ <script>
+     $(document).ready(function () {
+         $("#btnSubmitRegister").on('click', function (event) {
+             event.preventDefault();
+             var el = $(this);
+             el.prop('disabled', true);
+             setTimeout(function () { el.prop('disabled', false); }, 3000);
+         });
+     });
+</script>
   <!-- Start main-content -->
   <div class="main-content bg-lighter">
     <!-- Section: inner-header -->
@@ -86,79 +95,81 @@
               </div>
           </div>
           <div class="col-md-8">
-            <h3 class="line-bottom mt-0 mb-20">Drop us a message</h3>
-            
-            <!-- Contact Form -->
-            <form id="contact_form" name="contact_form" class="" action="#" method="post">
+              <h3 class="line-bottom mt-0 mb-20">Drop us a message</h3>
+              @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+              {
+                  <!-- Contact Form -->
+                  <form id="contact_form" name="contact_form" class="" action="#" method="post">
 
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <input name="form_name" class="form-control" type="text" placeholder="Enter Name" required="">
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <input name="form_email" class="form-control required email" type="email" placeholder="Enter Email">
-                  </div>
-                </div>
-              </div>
-                
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <select id="country" name="country" class="form-control">
-                                                <option>--Subject of Message----</option>
-                                                <option>General Enquiry</option>
-                                                <option>Careers</option>
-                                                <option>Website Feedback</option>
-                                                <option>Donation Related</option>
-                                                
-                                            </select>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <input name="form_phone" class="form-control" type="text" placeholder="Contact Number">
-                  </div>
-                </div>
-              </div>
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <input name="name" class="form-control" type="text" placeholder="Enter Name" required="">
+                              </div>
+                          </div>
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <input name="emailid" class="form-control required email" type="email" style="text-transform:lowercase" placeholder="Enter Email">
+                              </div>
+                          </div>
+                      </div>
 
-              <div class="form-group">
-                <textarea name="form_message" class="form-control required" rows="5" placeholder="Enter Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                <button type="submit" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px" data-loading-text="Please wait...">Send your message</button>
-                <button type="reset" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px">Reset</button>
-              </div>
-            </form>
+                      <div class="row">
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <select id="country" name="subject" class="form-control" required>
+                                      <option>--Subject of Message----</option>
+                                      <option>General Enquiry</option>
+                                      <option>Careers</option>
+                                      <option>Website Feedback</option>
+                                      <option>Donation Related</option>
 
-            <!-- Contact Form Validation-->
-            <script type="text/javascript">
-                $("#contact_form").validate({
-                    submitHandler: function (form) {
-                        var form_btn = $(form).find('button[type="submit"]');
-                        var form_result_div = '#form-result';
-                        $(form_result_div).remove();
-                        form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                        var form_btn_old_msg = form_btn.html();
-                        form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                        $(form).ajaxSubmit({
-                            dataType: 'json',
-                            success: function (data) {
-                                if (data.status == 'true') {
-                                    $(form).find('.form-control').val('');
-                                }
-                                form_btn.prop('disabled', false).html(form_btn_old_msg);
-                                $(form_result_div).html(data.message).fadeIn('slow');
-                                setTimeout(function () { $(form_result_div).fadeOut('slow') }, 6000);
-                            }
-                        });
-                    }
-                });
-            </script>
-          </div>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <input name="mobile" class="form-control" type="text" placeholder="Contact Number" required>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <textarea name="message" class="form-control required" rows="5" placeholder="Enter Message" required></textarea>
+                      </div>
+                      <div class="form-group">
+                          <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                          <button type="submit" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px" data-loading-text="Please wait...">Send your message</button>
+                          <button type="reset" class="btn btn-flat btn-theme-colored text-uppercase mt-10 mb-sm-30 border-left-theme-color-2-4px">Reset</button>
+                      </div>
+                  </form>
+              }
+
+                  <!-- Contact Form Validation-->
+                  <script type="text/javascript">
+                      $("#contact_form").validate({
+                          submitHandler: function (form) {
+                              var form_btn = $(form).find('button[type="submit"]');
+                              var form_result_div = '#form-result';
+                              $(form_result_div).remove();
+                              form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+                              var form_btn_old_msg = form_btn.html();
+                              form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+                              $(form).ajaxSubmit({
+                                  dataType: 'json',
+                                  success: function (data) {
+                                      if (data.status == 'true') {
+                                          $(form).find('.form-control').val('');
+                                      }
+                                      form_btn.prop('disabled', false).html(form_btn_old_msg);
+                                      $(form_result_div).html(data.message).fadeIn('slow');
+                                      setTimeout(function () { $(form_result_div).fadeOut('slow') }, 6000);
+                                  }
+                              });
+                          }
+                      });
+                  </script>
+              </div>
         </div>
       </div>
     </section>

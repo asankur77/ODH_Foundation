@@ -18,13 +18,14 @@ namespace odh_foundation.Models
         public DbSet<StateTab> StateTabs { get; set; }
         public DbSet<CityStateTab> CityStateTabs { get; set; }
         public DbSet<CompanyInfo> CompanyInfos { get; set; }
-        public DbSet<Contact> Contacts { get; set; }       
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Subscriber> Subscriber { get; set; } 
         public DbSet<DepartmentTab> DepartmentTabs { get; set; }
         public DbSet<DesignationTab> DesignationTabs { get; set; }        
         public DbSet<Expense> Expenses { get; set; }        
         public DbSet<ICardTab> ICardTabs { get; set; }
-        public DbSet<InOutTime> InOutTimes { get; set; }   
-        
+        public DbSet<InOutTime> InOutTimes { get; set; }
+       
         public DbSet<MacTab> MacTabs { get; set; }    
         public DbSet<Member_tab> Member_tabs { get; set; }
         public DbSet<NewLogin> NewLogins { get; set; }
@@ -37,6 +38,52 @@ namespace odh_foundation.Models
 
         public DbSet<WordLinePaymentResponse> WordLinePaymentResponses { get; set; }
         public DbSet<Volunteer> Volunteers { get; set; }
+       
+        public DbSet<IdFormatTab> IdFormatTabs { get; set; }
+        public DbSet<FinancialYearTab> FinancialYearTabs { get; set; }
+        public DbSet<TeamTab> TeamTabs { get; set; }
+        public DbSet<PressRelease> PressReleases { get; set; }
+        public DbSet<MessageTemplateTab> MessageTemplateTabs { get; set; }
+    }
+
+    [Table("MessageTemplateTab")]
+    public class MessageTemplateTab
+    {
+        [Key]
+        public int id { get; set; }
+        public string TemplateID { get; set; }
+        public string DltID { get; set; }
+        public string TemplateTitle { get; set; }
+        public string TemplateMessage { get; set; }
+        public string MessageType { get; set; }
+        public string MessageLanguage { get; set; }
+        public DateTime cdate { get; set; }
+        public int status { get; set; }
+    }
+
+    [Table("TeamTab")]
+    public class TeamTab
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Heading { get; set; }
+        public string Summary { get; set; }
+        public string Image { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Cdate { get; set; }
+        public int status { get; set; }
+    }
+    [Table("PressRelease")]
+    public class PressRelease
+    {
+        [Key]
+        public int Id { get; set; }
+        public string Heading { get; set; }
+        public string Summary { get; set; }
+        public string Image { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Cdate { get; set; }
+        public int status { get; set; }
     }
 
     [Table("Volunteer")]
@@ -46,6 +93,10 @@ namespace odh_foundation.Models
         public int Id { get; set; }
         public string VolunteerId { get; set; }
         public string Name { get; set; }
+        public string FName { get; set; }
+        public string Opid { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DOB { get; set; }
         public string Email { get; set; }
         public string Mobile { get; set; }
         public string WhatsupNumber { get; set; }
@@ -56,6 +107,12 @@ namespace odh_foundation.Models
         public string VolunteerAbility { get; set; }
         public DateTime RegistrationDate { get; set; }
         public int Status { get; set; }
+        public string AadharFront { get; set; }
+
+        public string AadharBack { get; set; }
+        public string ProfilePic { get; set; }
+       
+        public byte[] Photonew { get; set; }
     }
 
     [Table("WordLinePaymentResponse")]
@@ -100,9 +157,29 @@ namespace odh_foundation.Models
         public string Address { get; set; }
         public string Pincode { get; set; }
         public string PAN { get; set; }
+        public string aadharno { get; set; }
+        public string otherno { get; set; }
         public DateTime DonationDate { get; set; }
         public string PaymentTransactionId { get; set; }
         public int Status { get; set; }
+        public string title { get; set; }
+        public string amountinwords { get; set; }
+        public string financialyear { get; set; }
+        public string PaymentMode { get; set; }
+        public string PaymentState { get; set; }
+        //////////////PayMethodAdd//////////////
+        //public string paymethod { get; set; }
+        //public string bank { get; set; }
+        //public string Account { get; set; }
+        //public string chequeno { get; set; }
+        //public string ACholdername { get; set; }
+        //public string Branch { get; set; }
+        //public string IFSCCode { get; set; }
+        //public string ChequeAmount { get; set; }
+        //[DataType(DataType.Date)]
+        //public DateTime Chequedate { get; set; }
+        //public string Chequeimage { get; set; }
+        //public string transactiontype { get; set; }
     }
 
     [Table("HeadTab")]
@@ -112,6 +189,37 @@ namespace odh_foundation.Models
         public int Id { get; set; }
         public string head { get; set; }
         public string branchcode { get; set; }
+    }
+    [Table("IdFormatTab")]
+    public class IdFormatTab
+    {
+        [Key]
+        public int Id { get; set; }
+        public string FinancialYear { get; set; }
+        public string VolunteerIdFormat { get; set; }
+        public string DonarIdFormat { get; set; }
+        public string TxnidFormat { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime date { get; set; }
+        public int Status { get; set; }
+
+    }
+
+
+
+    [Table("FinancialYearTab")]
+    public class FinancialYearTab
+    {
+        [Key]
+        public int Id { get; set; }
+        public string FinancialYear { get; set; }
+        public string VolunteerIdFormat { get; set; }
+        public string DonarIdFormat { get; set; }
+        public string TxnidFormat { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime date { get; set; }
+        public int Status { get; set; }
+
     }
     [Table("Gallery")]
     public class Gallery
@@ -208,6 +316,20 @@ namespace odh_foundation.Models
         public string mobile { get; set; }
         public string subject { get; set; }
         public string message { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime cdate { get; set; }
+        public int status { get; set; }
+
+    }
+    [Table("Subscriber")]
+    public class Subscriber
+    {
+        [Key]
+        public int Id { get; set; }
+        public string emailid { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime cdate { get; set; }
+        public int status { get; set; }
 
     }
 
@@ -354,6 +476,19 @@ namespace odh_foundation.Models
         public string branchcode { get; set; }
         public string opid { get; set; }
         public int type { get; set; }
+        //-------Paymethod
+        public string paymethod { get; set; }
+        public string bank { get; set; }
+        public string Account { get; set; }
+        public string chequeno { get; set; }
+        public string ACholdername { get; set; }
+        public string Branch { get; set; }
+        public string IFSCCode { get; set; }
+        public string ChequeAmount { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Chequedate { get; set; }
+        public string Chequeimage { get; set; }
+        public string transactiontype { get; set; }
     }
     [Table("StateTab")]
     public class StateTab

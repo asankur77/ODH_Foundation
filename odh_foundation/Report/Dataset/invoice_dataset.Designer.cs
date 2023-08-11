@@ -313,6 +313,14 @@ namespace odh_foundation.Report.Dataset {
             
             private global::System.Data.DataColumn columnDonarId;
             
+            private global::System.Data.DataColumn columnaadharno;
+            
+            private global::System.Data.DataColumn columnotherno;
+            
+            private global::System.Data.DataColumn columnamountinwords;
+            
+            private global::System.Data.DataColumn columntitle;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public InvoiceDataTable() {
@@ -484,6 +492,38 @@ namespace odh_foundation.Report.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn aadharnoColumn {
+                get {
+                    return this.columnaadharno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn othernoColumn {
+                get {
+                    return this.columnotherno;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn amountinwordsColumn {
+                get {
+                    return this.columnamountinwords;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn titleColumn {
+                get {
+                    return this.columntitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -536,7 +576,11 @@ namespace odh_foundation.Report.Dataset {
                         string DonationDate, 
                         string PaymentTransactionId, 
                         string Status, 
-                        string DonarId) {
+                        string DonarId, 
+                        string aadharno, 
+                        string otherno, 
+                        string amountinwords, 
+                        string title) {
                 InvoiceRow rowInvoiceRow = ((InvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -555,7 +599,11 @@ namespace odh_foundation.Report.Dataset {
                         DonationDate,
                         PaymentTransactionId,
                         Status,
-                        DonarId};
+                        DonarId,
+                        aadharno,
+                        otherno,
+                        amountinwords,
+                        title};
                 rowInvoiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInvoiceRow);
                 return rowInvoiceRow;
@@ -595,6 +643,10 @@ namespace odh_foundation.Report.Dataset {
                 this.columnPaymentTransactionId = base.Columns["PaymentTransactionId"];
                 this.columnStatus = base.Columns["Status"];
                 this.columnDonarId = base.Columns["DonarId"];
+                this.columnaadharno = base.Columns["aadharno"];
+                this.columnotherno = base.Columns["otherno"];
+                this.columnamountinwords = base.Columns["amountinwords"];
+                this.columntitle = base.Columns["title"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -634,6 +686,14 @@ namespace odh_foundation.Report.Dataset {
                 base.Columns.Add(this.columnStatus);
                 this.columnDonarId = new global::System.Data.DataColumn("DonarId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDonarId);
+                this.columnaadharno = new global::System.Data.DataColumn("aadharno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaadharno);
+                this.columnotherno = new global::System.Data.DataColumn("otherno", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnotherno);
+                this.columnamountinwords = new global::System.Data.DataColumn("amountinwords", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnamountinwords);
+                this.columntitle = new global::System.Data.DataColumn("title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntitle);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1048,6 +1108,70 @@ namespace odh_foundation.Report.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string aadharno {
+                get {
+                    try {
+                        return ((string)(this[this.tableInvoice.aadharnoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'aadharno\' in table \'Invoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoice.aadharnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string otherno {
+                get {
+                    try {
+                        return ((string)(this[this.tableInvoice.othernoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'otherno\' in table \'Invoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoice.othernoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string amountinwords {
+                get {
+                    try {
+                        return ((string)(this[this.tableInvoice.amountinwordsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'amountinwords\' in table \'Invoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoice.amountinwordsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string title {
+                get {
+                    try {
+                        return ((string)(this[this.tableInvoice.titleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'title\' in table \'Invoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInvoice.titleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsIdNull() {
                 return this.IsNull(this.tableInvoice.IdColumn);
             }
@@ -1248,6 +1372,54 @@ namespace odh_foundation.Report.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDonarIdNull() {
                 this[this.tableInvoice.DonarIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsaadharnoNull() {
+                return this.IsNull(this.tableInvoice.aadharnoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetaadharnoNull() {
+                this[this.tableInvoice.aadharnoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsothernoNull() {
+                return this.IsNull(this.tableInvoice.othernoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetothernoNull() {
+                this[this.tableInvoice.othernoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsamountinwordsNull() {
+                return this.IsNull(this.tableInvoice.amountinwordsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetamountinwordsNull() {
+                this[this.tableInvoice.amountinwordsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IstitleNull() {
+                return this.IsNull(this.tableInvoice.titleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SettitleNull() {
+                this[this.tableInvoice.titleColumn] = global::System.Convert.DBNull;
             }
         }
         

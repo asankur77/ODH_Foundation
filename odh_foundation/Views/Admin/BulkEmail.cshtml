@@ -1,0 +1,17 @@
+﻿@using odh_foundation.Models;
+@{
+    UsersContext db = new UsersContext();
+  
+    var logo = string.Empty;
+    var companyname = string.Empty;
+    var incometype = string.Empty;
+
+    var r = db.CompanyInfos.Single(ci => ci.Id == 1);
+    logo = r.CompanyLogo;
+    companyname = r.CompanyName;
+    incometype = r.IncomeType;
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "ExpenseMenu";
+}
+<h2>BulkEmail</h2>

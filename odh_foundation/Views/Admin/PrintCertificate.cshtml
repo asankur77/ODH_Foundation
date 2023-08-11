@@ -1,0 +1,97 @@
+﻿
+@using odh_foundation.Models;
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Print Certificate";
+
+    UsersContext db = new UsersContext();
+   
+}
+
+<link rel="stylesheet" href="~/Content/jquery-ui.css" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#PaymentTransactionId").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Admin/AutoCompleteDonorID",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.Name + '(' + item.PaymentTransactionId + ')', value: item.PaymentTransactionId };
+
+
+                        }))
+
+                    }
+                })
+            },
+            messages: {
+                noResults: "", results: ""
+            }
+        });
+    })
+</script>
+
+@using(Html.BeginForm())
+{
+<div class="page-content">
+
+                <div class="container">
+                    <div class="page-toolbar">
+                        
+                        <div class="page-toolbar-block">
+                            <div class="page-toolbar-title">Enter Donor ID</div>
+                            <div class="page-toolbar-subtitle"></div>
+                        </div>
+                        
+                        <div class="page-toolbar-block pull-right">
+                           
+                        </div>           
+                        
+                    </div>
+  <div class="row" style="width:100%">
+                        <div class="col-md-6" style="width:100%">
+                            
+                            <div class="block" style="width:100%">
+                                <div class="block-content controls">
+                               
+                                <div class="row-form">
+                                        
+                <div class="col-md-9">
+
+                <div class="input-group input-group-lg">
+                                <span class="input-group-addon">Enter Transaction ID :</span>
+              <input type="text" class="form-control" id="PaymentTransactionId"  name="PaymentTransactionId"  />
+                            </div>     
+
+
+                </div>
+                                    </div>
+                                   
+                                   
+
+                                       <div class="page-toolbar-block pull-right">
+                            <div class="widget-info widget-from">
+                                                          
+                                <button type="submit" class="btn btn-primary" onclick="target='_blank'">Get Donor Certificate</button>                            
+                               
+                            </div>
+                        </div>
+                                   
+                                                                      
+                                                            
+                                      <p style="color:red;">@ViewBag.msg</p> 
+                                    
+                                </div>
+                                
+                            </div>
+                            </div>
+                          </div>    
+                     
+                    </div>
+
+    </div>
+}
